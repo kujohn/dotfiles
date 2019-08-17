@@ -29,7 +29,7 @@ au BufRead,BufNewFile *.styl set filetype=css
 let g:go_fmt_command = "goimports"
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
+"au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
@@ -41,8 +41,6 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 map <Leader>cd :cd %:p:h<CR>
 map <Leader>g :GoDoc
 
-
-set cursorline
 " ---------------------------------------------------------------
 " PLUGINS PLUGINS PLUGINS PLUGINS PLUGINS PLUGINS PLUGINS PLUGINS
 " ---------------------------------------------------------------
@@ -58,31 +56,24 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'briandoll/change-inside-surroundings.vim'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
-Plug 'kylef/apiblueprint.vim'
-Plug 'wavded/vim-stylus'
-Plug 'chemzqm/vim-jsx-improve'
-Plug 'avakhov/vim-yaml'
+Plug 'briandoll/change-inside-surroundings.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sophacles/vim-processing'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Themes
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 
-" Javascript
-Plug 'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'js', 'jsx' ]}
-Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js', 'jsx' ]}
-Plug 'chemzqm/vim-jsx-improve', { 'for': [ 'javascript', 'js', 'jsx' ]}
-Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]}
-Plug 'MaxMEllon/vim-jsx-pretty'
+" Multiple
+Plug 'sheerun/vim-polyglot'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
@@ -100,9 +91,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" CoC
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " color schemes
 hi VertSplit cterm=NONE ctermbg=NONE ctermfg=black
@@ -111,6 +102,7 @@ highlight clear SignColumn
 set background=dark
 let ayucolor="dark"   " for dark version of theme
 colorscheme ayu
+set cursorline
 
 " ALE
 let g:ale_sign_error = '▶'
@@ -135,4 +127,10 @@ let NERDTreeDirArrows = 1
 
 " Easy Motion
 map s <Plug>(easymotion-bd-w)
-map <C-s> <Plug>(easymotion-overwin-w)
+map <s-s> <Plug>(easymotion-overwin-w)
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
