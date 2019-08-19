@@ -18,6 +18,7 @@ let g:lightline.enable = {
   \ }
 " ~~~~ Statusline configuration ~~~~
 " ':help statusline' is your friend!
+
 function! RedrawModeColors(mode) " {{{
   " Normal mode
   if a:mode == 'n'
@@ -65,14 +66,14 @@ function! RedrawModeColors(mode) " {{{
   return ''
 endfunction
 " }}}
-function! SetModifiedSymbol(modified) " {{{
-    if a:modified == 1
-        hi MyStatuslineModifiedBody guibg=#3E3859 guifg=#ff8080
-    else
-        hi MyStatuslineModifiedBody guibg=#3E3859 guifg=#aaffe4
-    endif
-    return "\u25CF"
-endfunction
+"     function! SetModifiedSymbol(modified) " {{{
+"         if a:modified == 1
+"             hi MyStatuslineModifiedBody guibg=#3E3859 guifg=#ff8080
+"         else
+"             hi MyStatuslineModifiedBody guibg=#3E3859 guifg=#aaffe4
+"         endif
+"         return "\u25CF"
+"     endfunction
 " }}}
 function! SetFiletype(filetype) " {{{
   if a:filetype == ''
@@ -104,7 +105,7 @@ function! LSDiagnostic()
     return info['warning'] . "   "
   endif
 
-  return "   " 
+  return "   "
 endfunction
 
 function! Delta()
@@ -121,28 +122,28 @@ set statusline=%{RedrawModeColors(mode())}
 " " Left side items
 " " =======================
 set statusline+=%#MyStatuslineAccent#
-set statusline+=%#MyStatuslineAccentBody# 
+set statusline+=%#MyStatuslineAccentBody#
 set statusline+=\ \ \ 
-" " Filename
+" Filename
 set statusline+=%#MyStatuslineFilename#\ %t
-set statusline+=%#MyStatuslineSeparator#\ 
+set statusline+=%#MyStatuslineSeparator#
 
 " " Modified status
-set statusline+=%#MyStatuslineModified#
-set statusline+=%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}
-set statusline+=%#MyStatuslineModified#
+"set statusline+=%#MyStatuslineModified#
+"set statusline+=%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}
+"set statusline+=%#MyStatuslineModified#
 " " Right side items
 " " =======================
 set statusline+=%=
-set statusline+=%#MyStatuslineAccent#
-set statusline+=%#MyStatuslineAccentLabel#LS\ 
-set statusline+=%#MyStatuslineLangServer#%{LSDiagnostic()}
-set statusline+=%#MyStatuslineLineCol#\ 
+"set statusline+=%#MyStatuslineAccent#
+"set statusline+=%#MyStatuslineAccentLabel#LS\ 
+"set statusline+=%#MyStatuslineLangServer#%{LSDiagnostic()}
+"set statusline+=%#MyStatuslineLineCol#\ 
 " Test status
-set statusline+=%#MyStatuslineAccent#
-set statusline+=%#MyStatuslineAccentLabel#Tests\ 
-set statusline+=%#MyStatuslineTestStatus#%{TestStatus()}
-set statusline+=%#MyStatuslineLineCol#\ 
+"set statusline+=%#MyStatuslineAccent#
+"set statusline+=%#MyStatuslineAccentLabel#Tests\ 
+"set statusline+=%#MyStatuslineTestStatus#%{TestStatus()}
+"set statusline+=%#MyStatuslineLineCol#\ 
 " " Line and Column
 set statusline+=%#MyStatuslineLineCol#
 set statusline+=%#MyStatuslineLineColBody#%2l

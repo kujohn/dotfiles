@@ -1,4 +1,10 @@
 {
+	"diagnostic.errorSign": "◉",
+	"suggest.completionItemKindLabels": {
+		"module": "\uf6a6 ",
+		"function": "\uf794 ",
+		"variable": "\ufb18 "
+	},
   "languageserver": {
     "golang": {
       "command": "gopls",

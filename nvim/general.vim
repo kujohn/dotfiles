@@ -37,6 +37,7 @@ set sidescroll=1
 set hlsearch
 set equalalways
 set rtp+=$GOROOT/misc/vim
+set cursorline
 filetype plugin indent on
 syntax on
 "}}}
@@ -80,7 +81,6 @@ set history=100
 set path+=**
 set splitbelow
 set splitright
-
 set diffopt=vertical
 set fillchars+=vert:·
 
@@ -92,11 +92,6 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
-
-" CoC
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 
 " ALE
 let g:ale_sign_error = '▶'
@@ -111,17 +106,24 @@ nmap <leader>s :Ag<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>t :Buffers<CR>
 
-" Nerdtree
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFocus<CR>
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
 " Easy Motion
-map s <Plug>(easymotion-bd-w)
-map <s-s> <Plug>(easymotion-overwin-w)
+nmap s <Plug>(easymotion-bd-w)
+nmap S <Plug>(easymotion-overwin-w)
 
 " set ag as the grep program
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'filename' ]],
+      \   'right': []
+      \ },
+      \ 'inactive': {
+      \ 'left': [ [ 'filename' ] ],
+      \ 'right': []
+      \ }
+      \ }
+

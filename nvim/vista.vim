@@ -14,16 +14,15 @@ let g:vista#renderer#icons = {
 \   "variable": "\ufb18 "
 \  }
 
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
+"function! NearestMethodOrFunction() abort
+"  return get(b:, 'vista_nearest_method_or_function', '')
+"endfunction
+"
+"set statusline+=%{NearestMethodOrFunction()}
 
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" VISTA VISTA VISTA VISTA VISTA VISTA VISTA VISTA VISTA VISTA VISTA
 
