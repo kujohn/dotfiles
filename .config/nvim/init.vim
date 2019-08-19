@@ -121,8 +121,3 @@ map <s-s> <Plug>(easymotion-overwin-w)
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
-
-source vim/coc.vim
-source vim/vista.vim
-"source vim/status-line.vim
-"source vim/tab-line.vim

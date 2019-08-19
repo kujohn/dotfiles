@@ -64,11 +64,7 @@ set splitbelow
 set splitright
 
 set diffopt=vertical
-
-" indent lines
-"let g:indentLine_setColors = 1
-"let g:indentLine_char = '▎'
-"let g:indentLine_color_gui = '#141B21'
+set fillchars+=vert:·
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -83,8 +79,6 @@ endif
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" color schemes
-set fillchars+=vert:·
 
 " ALE
 let g:ale_sign_error = '▶'
@@ -113,5 +107,3 @@ map <s-s> <Plug>(easymotion-overwin-w)
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
-
-let g:webdevicons_enable = 1
