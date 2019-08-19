@@ -1,4 +1,4 @@
-nmap <leader>v :Vista<CR>
+nmap <leader>v :Vista!!<CR>
 let g:vista_sidebar_width = 45
 let g:vista_disable_statusline = 1
 let g:vista_default_executive = 'coc'
