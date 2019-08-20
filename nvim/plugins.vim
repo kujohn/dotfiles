@@ -13,6 +13,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'sophacles/vim-processing'
