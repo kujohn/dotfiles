@@ -139,8 +139,3 @@ endif
 highlight GitGutterAdd    guifg=#009900 guibg=NONE ctermfg=2 ctermbg=NONE
 highlight GitGutterChange guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=NONE
 highlight GitGutterDelete guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=NONE
-
-"deoplete
-"let g:deoplete#enable_at_startup = 1
-"inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"inoremap <silent><expr> <s-TAB>  pumvisible() ? "\<C-p>" : "\<s-TAB>"
