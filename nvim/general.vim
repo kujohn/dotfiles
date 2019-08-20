@@ -37,7 +37,8 @@ set sidescroll=1
 set hlsearch
 set equalalways
 set rtp+=$GOROOT/misc/vim
-set cursorline
+"set cursorline
+let g:indentLine_char = '·'
 filetype plugin indent on
 syntax on
 "}}}
@@ -116,7 +117,7 @@ if executable('rg')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'embark',
       \ 'active': {
       \   'left': [ [ 'filename' ]],
       \   'right': []
@@ -127,3 +128,19 @@ let g:lightline = {
       \ }
       \ }
 
+" theme
+colorscheme embark
+hi Cursor guibg=#F48FB1 guifg=white
+if has("gui_vimr")
+else
+  hi Normal guibg=NONE ctermbg=NONE
+  hi LineNr guibg=NONE ctermbg=NONE
+endif
+highlight GitGutterAdd    guifg=#009900 guibg=NONE ctermfg=2 ctermbg=NONE
+highlight GitGutterChange guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=NONE
+highlight GitGutterDelete guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=NONE
+
+"deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <s-TAB>  pumvisible() ? "\<C-p>" : "\<s-TAB>"

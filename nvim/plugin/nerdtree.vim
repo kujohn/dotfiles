@@ -8,3 +8,4 @@ let g:DevIconsEnableFolderExtensionPatternMatching = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeStatusline="%8*%=%7*NERD%8*%="

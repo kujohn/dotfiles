@@ -21,8 +21,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
 "Plug 'liuchengxu/vista.vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 
 " Multiple
