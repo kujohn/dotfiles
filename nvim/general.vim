@@ -119,11 +119,11 @@ endif
 let g:lightline = {
       \ 'colorscheme': 'embark',
       \ 'active': {
-      \   'left': [ [ 'filename' ]],
+      \   'left': [['filename']],
       \   'right': []
       \ },
       \ 'inactive': {
-      \ 'left': [ [ 'filename' ] ],
+      \ 'left': [['filename']],
       \ 'right': []
       \ }
       \ }
@@ -139,3 +139,27 @@ endif
 highlight GitGutterAdd    guifg=#009900 guibg=NONE ctermfg=2 ctermbg=NONE
 highlight GitGutterChange guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=NONE
 highlight GitGutterDelete guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=NONE
+
+
+"deoplete
+set hidden
+let g:deoplete#enable_at_startup = 1
+let g:neosnippet#enable_completed_snippet = 1
+let g:autocomplete_flow#insert_paren_after_function = 0
+let g:LanguageClient_serverCommands = {
+  \ 'go': ['gopls'],
+  \ 'css': ['css-languageserver',  '--stdio'],
+  \ 'less': ['css-languageserver',  '--stdio'],
+  \ 'sass': ['css-languageserver',  '--stdio'],
+  \ 'stylus': ['css-languageserver',  '--stdio'],
+  \ 'javascript': ['typescript-language-server',  '--stdio'],
+  \ 'javascript.jsx': ['typescript-language-server',  '--stdio'],
+  \ 'typescript': ['typescript-language-server',  '--stdio'],
+  \ 'typescript.tsx': ['typescript-language-server',  '--stdio'],
+    \ }
+nnoremap <F2> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>rn :call LanguageClient#textDocument_rename()<CR>
+inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <s-TAB>  pumvisible() ? "\<C-p>" : "\<s-TAB>"

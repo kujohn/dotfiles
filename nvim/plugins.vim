@@ -18,8 +18,18 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'sophacles/vim-processing'
 Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
-Plug 'liuchengxu/vista.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'wokalski/autocomplete-flow'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'sheerun/vim-polyglot'
 Plug 'sbdchd/neoformat'
 Plug 'ryanoasis/vim-devicons'
