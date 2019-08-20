@@ -19,10 +19,10 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'sophacles/vim-processing'
 Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
-"Plug 'liuchengxu/vista.vim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'liuchengxu/vista.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 
 " Multiple
