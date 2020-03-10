@@ -1,1 +1,3 @@
-/Users/jku/.gitignore_global
+*.vim
+.DS_Store
+tmux*.log
