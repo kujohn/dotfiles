@@ -1,3 +1,4 @@
 .DS_Store
 .config/nvim/.netrwhist
 .config/nvim/unused/
+.lein/repl-history

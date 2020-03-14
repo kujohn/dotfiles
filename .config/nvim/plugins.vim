@@ -27,7 +27,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'venantius/vim-cljfmt'
 Plug 'tpope/vim-fireplace'
 Plug 'vim-scripts/paredit.vim'
-Plug 'kien/rainbow_parentheses.vim'
+"Plug 'kien/rainbow_parentheses.vim'
 
 " Language Server
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
