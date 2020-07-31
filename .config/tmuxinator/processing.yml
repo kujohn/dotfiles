@@ -50,5 +50,11 @@ windows:
       layout: main-vertical
       root: ~/Documents/Processing/toolbelt
       panes:
+        - find . -name '*.clj' | entr -r -s -c 'lein pom; lein jar; lein install'
         - vim src/toolbelt/core.clj
-        - find . -name '*.clj' | entr -r -s -c 'lein jar; lein install'
+  - testing:
+      layout: main-vertical
+      root: ~/Documents/Processing/lang
+      panes:
+        - ls test.clj | entr -r -s -c 'lein exec test.clj'
+        -

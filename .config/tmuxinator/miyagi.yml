@@ -42,19 +42,19 @@ root: ~/go/src/github.pie.apple.com/redev
 windows:
   - frontend:
       layout: main-vertical
-      root: ~/go/src/github.pie.apple.com/redev/miyagi-frontend
+      root: ~/go/src/github.pie.apple.com/dc-tools/miyagi-frontend
       panes:
-        - vim
         - yarn dev
+        -
   - controller:
       layout: main-vertical
-      root: ~/go/src/github.pie.apple.com/redev/miyagi-controller
+      root: ~/go/src/github.pie.apple.com/dc-tools/miyagi-controller
       panes:
-        - vim
-        - pet exec
+        - gohot
+        -
   - playbook:
       layout: main-vertical
       root: ~/go/src/github.pie.apple.com/redev/miyagi-playbook
       panes:
-        - vim
-        - pet exec
+        - gohot
+        -

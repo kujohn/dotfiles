@@ -172,11 +172,14 @@ let g:LanguageClient_serverCommands = {
 let g:clj_fmt_autosave = 0
 nnoremap <leader>c :Cljfmt<CR>
 nnoremap <leader>m :make<CR>
-nnoremap <F2> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent><leader>h :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent><leader>dd :call LanguageClient_contextMenu()<CR>
+"nnoremap <F2> :call LanguageClient_contextMenu()<CR>
+"nnoremap <silent><leader>dd :call LanguageClient_contextMenu()<CR>
+"nnoremap <silent><leader>g :call LanguageClient_contextMenu()<CR>
 "nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent><leader>ww :call LanguageClient_contextMenu()<CR>
+nnoremap <silent><leader>hh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent><leader>dd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent><leader>rr :call LanguageClient#textDocument_references()<CR>
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr> <s-TAB>  pumvisible() ? "\<C-p>" : "\<s-TAB>"
 
@@ -192,6 +195,15 @@ endif
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
+" syntasticset statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_clojure_checkers = ['eastwood']
 
 " Jump to definition under cursore
 " Normal mode: Jump to definition under cursore

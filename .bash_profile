@@ -45,3 +45,26 @@ fi
 
 # ENV
 . /Users/jku/.env
+[[ :$PATH: == *:$HOME/bin:* ]] || PATH=$HOME/bin:$PATH
+# If AppleConnect does not work, you can get CAPRI_APP_ID and CAPRI_APP_KEY from  https://capri-developer.apple.com
+# export CAPRI_APP_ID=XXX
+# export CAPRI_APP_KEY=XXX
+# If AppleConnect does not work, you can get ADB_APP_ID and ADB_APP_KEY from  https://adb-developer.apple.com 
+# export ADB_APP_ID=XXX
+# export ADB_APP_KEY=XXX
+# You can get ADB_UAT_APP_ID and ADB_UAT_APP_KEY from https://adb-uat-developer.corp.apple.com
+# export ADB_UAT_APP_ID=XXX
+# export ADB_UAT_APP_KEY=XXX
+# If AppleConnect does not work, you can get METRON_APP_ID and METRON_APP_KEY from  metron@group.apple.com
+# export METRON_APP_ID=XXX
+# export METRON_APP_KEY=XXX
+# If AppleConnect does not work, you can get CONNECT_APP_ID and CONNECT_APP_KEY from  circuitdb-dev@group.apple.com
+# export CONNECT_APP_ID=XXX
+# export CONNECT_APP_KEY=XXX
+# If AppleConnect does not work, you can get GENERIC_APP_ID and GENERIC_APP_KEY from  the api provider
+# export GENERIC_APP_ID=XXX
+# export GENERIC_APP_KEY=XXX
+# export GENERIC_BASE_URL=https://example-api.corp.apple.com
+# If AppleConnect does not work, you can get GROOT_GNSD_APP_ID and GROOT_GNSD_APP_KEY from  https://bits.corp.apple.com/support/?appName=groot
+# export GROOT_GNSD_APP_ID=XXX
+# export GROOT_GNSD_APP_KEY=XXX
