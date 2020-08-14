@@ -1,6 +1,0 @@
-#!/bin/bash
-
-cp -r .config/
-cp -r . ~/.lein
-
-cp ./{.bash_profile,.tmux.conf} ~/

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cp -r ~/.config/nvim .config/
-cp -r ~/.config/kitty .config/
-cp -r ~/.config/tmuxinator .config/
-cp -r ~/.lein .
-
-cp ~/{.bash_profile,.tmux.conf} .

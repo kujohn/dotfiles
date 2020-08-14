@@ -3,3 +3,4 @@
 .config/nvim/.netrwhist
 .config/nvim/unused/
 .lein/repl-history
+.git
