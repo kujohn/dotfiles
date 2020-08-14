@@ -22,15 +22,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sbdchd/neoformat'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/goyo.vim'
 
 " Clojure
 Plug 'venantius/vim-cljfmt'
 Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-salve'
 Plug 'vim-scripts/paredit.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'venantius/vim-eastwood'
+Plug 'kien/rainbow_parentheses.vim'
 
 " Language Server
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

@@ -23,6 +23,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sbdchd/neoformat'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
+Plug 'diepm/vim-rest-console'
 
 " Clojure
 Plug 'venantius/vim-cljfmt'
