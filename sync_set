@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cp -r .config/
+cp -r .config/ ~/.config/
 
-cp ./{.bash_profile,.tmux.conf} ~/
+cp ./{.zshrc,.bash_profile,.tmux.conf} ~/
