@@ -1,18 +1,12 @@
-syntax enable
-
 highlight Comment cterm=italic
 hi link xmlEndTag xmlTag
 hi htmlArg gui=italic
-hi Comment gui=italic
-hi Type gui=italic
 hi htmlArg cterm=italic
+hi Comment gui=italic
 hi Comment cterm=italic
 hi Type cterm=italic
+hi Type gui=italic
 
-"  Italic
-let &t_8f="\<Esc>[38;2%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
 set encoding=UTF-8
 set tabstop=2
@@ -48,13 +42,11 @@ let g:go_fmt_command = "goimports"
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>i <Plug>(go-info)
-"au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
 
 " vim-fireplace
 au Filetype clojure nmap <Leader>r :Require<cr>
@@ -89,17 +81,6 @@ if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" ALE
-"let g:ale_sign_error = '▶'
-"let g:ale_sign_warning = '჻'
-"highlight ALEErrorSign guibg=NONE guifg=red ctermbg=NONE ctermfg=red
-"highlight ALEWarningSign guibg=NONE guifg=red ctermbg=NONE ctermfg=red
-"let g:ale_lint_on_enter = 1
-
 " FZF, Searches
 nmap <leader>f :FZF<CR>
 nmap <leader>s :Ag<CR>
@@ -116,7 +97,7 @@ if executable('rg')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'embark',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [['filename']],
       \   'right': []
@@ -126,24 +107,43 @@ let g:lightline = {
       \ 'right': []
       \ }
       \ }
+let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+let s:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+let s:palette.inactive.middle = s:palette.normal.middle
+let s:palette.tabline.middle = s:palette.normal.middle
 
 " theme
-colorscheme embark
-hi Cursor guibg=#F48FB1 guifg=white
-if has("gui_vimr")
-else
-  hi Normal guibg=NONE ctermbg=NONE
-  hi LineNr guibg=NONE ctermbg=NONE
+set termguicolors
+
+" italic
+"let g:miramare_enable_italic = 1
+"let g:miramare_disable_italic_comment = 0
+"let g:miramare_transparent_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+syntax enable
+
+colorscheme nord
+
+if !has('gui_running')
+  set t_Co=256
 endif
+
+hi Cursor guibg=#F48FB1 guifg=white
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi Directory ctermbg=NONE guibg=NONE
+"highlight DiffAdd           cterm=bold ctermbg=NONE ctermfg=2 guifg=#009900
+"highlight DiffDelete        cterm=bold ctermbg=NONE ctermfg=1 guifg=#ff2222
+"highlight DiffChange        cterm=bold ctermbg=NONE ctermfg=3 guifg=#bbbb00
+highlight link SignifyLineChange DiffText
+highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=2 guifg=#009900
+highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=1 guifg=#ff2222
+highlight SignifySignChange cterm=bold ctermbg=NONE ctermfg=3 guifg=#bbbb00
+highlight SignColumn guibg=NONE ctermbg=NONE
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_realtime = 0
-highlight link SignifyLineChange DiffText
-highlight DiffAdd           cterm=bold ctermbg=none ctermfg=2 guifg=#009900
-highlight DiffDelete        cterm=bold ctermbg=none ctermfg=1 guifg=#ff2222
-highlight DiffChange        cterm=bold ctermbg=none ctermfg=3 guifg=#bbbb00
-highlight SignifySignAdd    cterm=bold ctermbg=none ctermfg=2 guifg=#009900
-highlight SignifySignDelete cterm=bold ctermbg=none ctermfg=1 guifg=#ff2222
-highlight SignifySignChange cterm=bold ctermbg=none ctermfg=3 guifg=#bbbb00
 let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '-'
 let g:signify_sign_delete_first_line = '-'
@@ -151,7 +151,7 @@ let g:signify_sign_change            = '~'
 let g:signify_sign_changedelete      = g:signify_sign_change
 
 
-" deoplete SECTION
+" deoplete
 set hidden
 let g:deoplete#enable_at_startup = 1
 let g:autocomplete_flow#insert_paren_after_function = 0
@@ -172,10 +172,6 @@ let g:LanguageClient_serverCommands = {
 let g:clj_fmt_autosave = 0
 nnoremap <leader>c :Cljfmt<CR>
 nnoremap <leader>m :make<CR>
-"nnoremap <F2> :call LanguageClient_contextMenu()<CR>
-"nnoremap <silent><leader>dd :call LanguageClient_contextMenu()<CR>
-"nnoremap <silent><leader>g :call LanguageClient_contextMenu()<CR>
-"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent><leader>ww :call LanguageClient_contextMenu()<CR>
 nnoremap <silent><leader>hh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent><leader>dd :call LanguageClient#textDocument_definition()<CR>
@@ -190,11 +186,6 @@ else
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 endif
 
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
-
 " syntasticset statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -205,15 +196,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_clojure_checkers = ['eastwood']
 
-" Jump to definition under cursore
-" Normal mode: Jump to definition under cursore
-"nnoremap <leader>j :AnyJump<CR>
-"
-"" Visual mode: jump to selected text in visual mode
-"xnoremap <leader>j :AnyJumpVisual<CR>
-"
-"" Normal mode: open previous opened file (after jump)
-"nnoremap <leader>ab :AnyJumpBack<CR>
-"
-"" Normal mode: open last closed search window again
-"nnoremap <leader>al :AnyJumpLastResults<CR>
+"  Italic
+" let &t_8f="\<Esc>[38;2%lu;%lu;%lum"
+" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+"if exists('+termguicolors')
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"  set termguicolors
+"endif

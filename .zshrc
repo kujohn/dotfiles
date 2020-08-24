@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/johnku/.oh-my-zsh"
+export ZSH="/Users/jku/.oh-my-zsh"
  . /usr/local/etc/profile.d/z.sh
 
 # Set name of the theme to load --- if set to "random", it will
@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/opt/openjdk/bin:$PATH:/Users/johnku/go/bin:/Users/johnku/bin"
+export PATH="/Users/jku/bin:/Users/jku/go/bin:/usr/local/opt/openjdk/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -120,3 +120,4 @@ zplug load
 # Set typewritten ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt typewritten
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)

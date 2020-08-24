@@ -50,11 +50,11 @@ windows:
       layout: main-vertical
       root: ~/go/src/github.pie.apple.com/dc-tools/miyagi-controller
       panes:
-        - gohot
+        -
         -
   - playbook:
       layout: main-vertical
       root: ~/go/src/github.pie.apple.com/redev/miyagi-playbook
       panes:
-        - gohot
+        -
         -
