@@ -26,6 +26,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
 Plug 'vim-syntastic/syntastic'
+Plug 'thaerkh/vim-workspace'
 
 " Themes
 Plug 'skbolton/embark'

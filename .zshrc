@@ -108,9 +108,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/Users/jku/bin:/Users/jku/go/bin:/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/Users/jku/bin:/Users/jku/.emacs.d/bin/:/Users/jku/go/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias em='TERM=screen-24bit emacsclient -t'
+alias em-restart="emacsclient -e '(kill-emacs)'; emacs --daemon"
 
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1

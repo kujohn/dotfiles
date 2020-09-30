@@ -179,6 +179,11 @@ nnoremap <silent><leader>rr :call LanguageClient#textDocument_references()<CR>
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr> <s-TAB>  pumvisible() ? "\<C-p>" : "\<s-TAB>"
 
+"workspace
+nnoremap <leader>w :ToggleWorkspace<CR>
+let g:workspace_create_new_tabs = 0  " enabled = 1 (default), disabled = 0
+let g:workspace_autosave_always = 1
+
 
 if has('win32') || has('win64')
   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
