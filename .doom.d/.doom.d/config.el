@@ -46,7 +46,9 @@
 (global-set-key (kbd "M-w") 'switch-window)
 
 (setq mac-command-modifier 'super)
-(global-set-key (kbd "M-<tab>") '+workspace/cycle)
+(global-set-key (kbd "M-w") '+workspace/cycle)
+(global-set-key (kbd "M-i") '+workspace/switch-left)
+(global-set-key (kbd "M-o") '+workspace/switch-right)
 
 (global-set-key (kbd "C-h") 'evil-window-left)
 (global-set-key (kbd "C-l") 'evil-window-right)
