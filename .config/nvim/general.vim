@@ -183,7 +183,7 @@ inoremap <silent><expr> <s-TAB>  pumvisible() ? "\<C-p>" : "\<s-TAB>"
 nnoremap <leader>w :ToggleWorkspace<CR>
 let g:workspace_create_new_tabs = 0  " enabled = 1 (default), disabled = 0
 let g:workspace_autosave_always = 1
-
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 
 if has('win32') || has('win64')
   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
@@ -209,3 +209,4 @@ let g:syntastic_clojure_checkers = ['eastwood']
 "  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "  set termguicolors
 "endif
+let $TERM="xterm-256color"

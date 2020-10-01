@@ -16,7 +16,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-"Plug 'sophacles/vim-processing'
 Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -27,6 +26,7 @@ Plug 'baverman/vial'
 Plug 'baverman/vial-http'
 Plug 'vim-syntastic/syntastic'
 Plug 'thaerkh/vim-workspace'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " Themes
 Plug 'skbolton/embark'

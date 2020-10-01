@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "John K"
+      user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-horizon)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -34,40 +34,51 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
-(setq auto-window-vscroll nil)
+;;(setq auto-window-vscroll nil)
 (setq avy-all-windows t)
-
-(require 'switch-window)
-
-(global-set-key (kbd "M-h") 'avy-goto-word-0)
-(global-set-key (kbd "M-j") 'avy-goto-word-0-below)
-(global-set-key (kbd "M-k") 'avy-goto-word-0-above)
-(global-set-key (kbd "M-l") 'avy-goto-line)
-(global-set-key (kbd "M-w") 'switch-window)
-
 (setq mac-command-modifier 'super)
-(global-set-key (kbd "M-w") '+workspace/cycle)
-(global-set-key (kbd "M-i") '+workspace/switch-left)
-(global-set-key (kbd "M-o") '+workspace/switch-right)
-
-(global-set-key (kbd "C-h") 'evil-window-left)
-(global-set-key (kbd "C-l") 'evil-window-right)
-(global-set-key (kbd "C-j") 'evil-window-down)
-(global-set-key (kbd "C-k") 'evil-window-up)
-(global-set-key (kbd "C-g") '+treemacs/toggle)
-
-(setq doom-themes-treemacs-theme "doom-colors")
-(doom-themes-treemacs-config)
 
 (setq doom-font (font-spec :family "Operator Mono" :size 12 :weight 'Light)
       doom-variable-pitch-font (font-spec :family "Operator Mono" :size 12 :weight 'Light))
 
-(setq switch-window-shortcut-style 'qwerty)
+;; company
+(setq company-minimum-prefix-length 2
+      company-tooltip-limit 10
+      company-idle-delay 0.55)
+
+;; tabnine
+(require 'company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
+
+
+(global-set-key (kbd "M-t") 'company-manual-begin)
+
+;; workspace
+(global-set-key (kbd "M-i") '+workspace/switch-left)
+(global-set-key (kbd "M-o") '+workspace/switch-right)
+(global-set-key (kbd "M-g") 'godoc-at-point)
+
+;; search
+(global-set-key (kbd "M-f") 'counsel-ag)
+(global-set-key (kbd "M-n") '+treemacs/toggle)
+
+;; navigation
+(global-set-key (kbd "C-h") 'evil-window-left)
+(global-set-key (kbd "C-l") 'evil-window-right)
+(global-set-key (kbd "C-j") 'evil-window-down)
+(global-set-key (kbd "C-k") 'evil-window-up)
+
+
+;; golang
+(add-hook 'before-save-hook 'gofmt-before-save)
+(setq gofmt-command "goimports")
+  (if (not (string-match "go" compile-command))   ; set compile command default
+      (set (make-local-variable 'compile-command)
+           "go build -v && go test -v && go vet"))
 
 (use-package! tmux-pane
   :config
   (tmux-pane-mode))
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
