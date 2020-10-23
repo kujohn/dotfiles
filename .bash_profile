@@ -49,7 +49,7 @@ fi
 # If AppleConnect does not work, you can get CAPRI_APP_ID and CAPRI_APP_KEY from  https://capri-developer.apple.com
 # export CAPRI_APP_ID=XXX
 # export CAPRI_APP_KEY=XXX
-# If AppleConnect does not work, you can get ADB_APP_ID and ADB_APP_KEY from  https://adb-developer.apple.com 
+# If AppleConnect does not work, you can get ADB_APP_ID and ADB_APP_KEY from  https://adb-developer.apple.com
 # export ADB_APP_ID=XXX
 # export ADB_APP_KEY=XXX
 # You can get ADB_UAT_APP_ID and ADB_UAT_APP_KEY from https://adb-uat-developer.corp.apple.com

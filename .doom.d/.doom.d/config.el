@@ -25,7 +25,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-horizon)
+(setq doom-theme 'doom-palenight)
+(setq doom-themes-treemacs-theme "Default")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -33,41 +34,57 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;;(setq display-line-numbers-type nil)
 ;;(setq auto-window-vscroll nil)
 (setq avy-all-windows t)
 (setq mac-command-modifier 'super)
 
+;; magit
+(setq magit-git-executable "/usr/local/bin/git")
+(setq magit-refresh-status-buffer nil)
+
 (setq doom-font (font-spec :family "Operator Mono" :size 12 :weight 'Light)
       doom-variable-pitch-font (font-spec :family "Operator Mono" :size 12 :weight 'Light))
 
+;;flycheck
+(setq flycheck-indication-mode 'left-margin)
+(defun my/set-flycheck-margins ()
+  (setq left-fringe-width 8 right-fringe-width 8
+        left-margin-width 1 right-margin-width 0)
+  (flycheck-refresh-fringes-and-margins))
+(add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
+
 ;; company
 (setq company-minimum-prefix-length 2
-      company-tooltip-limit 10
-      company-idle-delay 0.55)
+      company-tooltip-limit 15
+      company-idle-delay 0.2)
 
 ;; tabnine
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 
-
-(global-set-key (kbd "M-t") 'company-manual-begin)
+(global-set-key (kbd "M-z") 'avy-goto-word-0)
+(global-set-key (kbd "M-g") 'godoc-at-point)
+(global-set-key (kbd "M-l") 'lsp-ui-imenu)
 
 ;; workspace
 (global-set-key (kbd "M-i") '+workspace/switch-left)
 (global-set-key (kbd "M-o") '+workspace/switch-right)
-(global-set-key (kbd "M-g") 'godoc-at-point)
 
 ;; search
-(global-set-key (kbd "M-f") 'counsel-ag)
-(global-set-key (kbd "M-n") '+treemacs/toggle)
+(global-set-key (kbd "M-f") 'counsel-projectile-rg)
+(global-set-key (kbd "C-g") 'treemacs-select-window)
+(global-set-key (kbd "C-g") 'treemacs-select-window)
 
 ;; navigation
 (global-set-key (kbd "C-h") 'evil-window-left)
 (global-set-key (kbd "C-l") 'evil-window-right)
 (global-set-key (kbd "C-j") 'evil-window-down)
 (global-set-key (kbd "C-k") 'evil-window-up)
-
+(global-set-key (kbd "M-c") 'evil-window-vsplit)
+(global-set-key (kbd "M-d") 'evil-window-delete)
+(global-set-key (kbd "M-n") 'next-buffer)
+(global-set-key (kbd "M-p") 'previous-buffer)
 
 ;; golang
 (add-hook 'before-save-hook 'gofmt-before-save)

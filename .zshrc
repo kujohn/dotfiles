@@ -79,6 +79,10 @@ plugins=(
   dotenv
   fzf
   git-prompt
+  history
+  kubectl
+  helm
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -113,6 +117,9 @@ export PATH="/Users/jku/bin:/Users/jku/.emacs.d/bin/:/Users/jku/go/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias em='TERM=screen-24bit emacsclient -t'
 alias em-restart="emacsclient -e '(kill-emacs)'; emacs --daemon"
+alias k='kubectl'
+alias d='docker'
+alias h='helm'
 
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1

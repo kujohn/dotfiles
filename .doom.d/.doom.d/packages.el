@@ -48,9 +48,10 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-;
-;
+(package! osx-clipboard)
+(package! atomic-chrome)
 (package! company-tabnine)
 (package! ag)
 (package! tmux-pane)
 (package! avy)
+(package! flycheck)
