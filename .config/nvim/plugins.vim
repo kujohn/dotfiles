@@ -8,7 +8,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
 Plug 'mhinz/vim-signify'
 Plug 'kshenoy/vim-signature'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -25,7 +25,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
 Plug 'vim-syntastic/syntastic'
-Plug 'thaerkh/vim-workspace'
+"Plug 'thaerkh/vim-workspace'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " Themes

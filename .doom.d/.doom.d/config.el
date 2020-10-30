@@ -25,7 +25,6 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-palenight)
 (setq doom-themes-treemacs-theme "Default")
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -40,19 +39,30 @@
 (setq mac-command-modifier 'super)
 
 ;; magit
-(setq magit-git-executable "/usr/local/bin/git")
-(setq magit-refresh-status-buffer nil)
+;;(setq magit-git-executable "/usr/local/bin/git")
+;;(setq magit-refresh-status-buffer nil)
 
 (setq doom-font (font-spec :family "Operator Mono" :size 12 :weight 'Light)
       doom-variable-pitch-font (font-spec :family "Operator Mono" :size 12 :weight 'Light))
 
-;;flycheck
-(setq flycheck-indication-mode 'left-margin)
-(defun my/set-flycheck-margins ()
-  (setq left-fringe-width 8 right-fringe-width 8
-        left-margin-width 1 right-margin-width 0)
-  (flycheck-refresh-fringes-and-margins))
-(add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
+;; prettier settings
+(setq prettier-js-args '(
+  "--trailing-comma" "none"
+  "--semi" "true"
+  "--single-quote" "true"
+  "--bracket-spacing" "true"
+))
+;; allow look up to other window
+(dolist (fn '(definition references))
+  (fset (intern (format "+lookup/%s-other-window" fn))
+        (lambda (identifier &optional arg)
+          "TODO"
+          (interactive (list (doom-thing-at-point-or-region)
+                             current-prefix-arg))
+          (let ((pt (point)))
+            (switch-to-buffer-other-window (current-buffer))
+            (goto-char pt)
+            (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
 ;; company
 (setq company-minimum-prefix-length 2
@@ -63,39 +73,87 @@
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 
+;; look up
+(global-set-key (kbd "M-f") 'counsel-projectile-rg)
 (global-set-key (kbd "M-z") 'avy-goto-word-0)
 (global-set-key (kbd "M-g") 'godoc-at-point)
-(global-set-key (kbd "M-l") 'lsp-ui-imenu)
+(global-set-key (kbd "M-d") '+lookup/definition-other-window)
+(global-set-key (kbd "M-r") '+lookup/references)
 
-;; workspace
-(global-set-key (kbd "M-i") '+workspace/switch-left)
-(global-set-key (kbd "M-o") '+workspace/switch-right)
-
-;; search
-(global-set-key (kbd "M-f") 'counsel-projectile-rg)
-(global-set-key (kbd "C-g") 'treemacs-select-window)
-(global-set-key (kbd "C-g") 'treemacs-select-window)
-
-;; navigation
+;; buffer, windows, workspaces
 (global-set-key (kbd "C-h") 'evil-window-left)
 (global-set-key (kbd "C-l") 'evil-window-right)
 (global-set-key (kbd "C-j") 'evil-window-down)
 (global-set-key (kbd "C-k") 'evil-window-up)
-(global-set-key (kbd "M-c") 'evil-window-vsplit)
-(global-set-key (kbd "M-d") 'evil-window-delete)
-(global-set-key (kbd "M-n") 'next-buffer)
-(global-set-key (kbd "M-p") 'previous-buffer)
+(global-set-key (kbd "M-n") 'evil-window-vsplit)
+(global-set-key (kbd "M-w") 'evil-window-delete)
 
-;; golang
+(global-set-key (kbd "M-h") '+workspace/switch-left)
+(global-set-key (kbd "M-l") '+workspace/switch-right)
+(global-set-key (kbd "M-i") 'next-buffer)
+(global-set-key (kbd "M-o") 'previous-buffer)
+(global-unset-key (kbd "M-k"))
+(global-unset-key (kbd "M-j"))
+
+(global-set-key (kbd "C-g") 'treemacs)
+(global-set-key (kbd "M-`") '+vterm/toggle)
+;; golang golang golang golang golang golang golang golang
 (add-hook 'before-save-hook 'gofmt-before-save)
 (setq gofmt-command "goimports")
   (if (not (string-match "go" compile-command))   ; set compile command default
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
 
+;; frontend frontend frontend frontend frontend frontend frontend frontend frontend
+(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+
+(use-package rjsx-mode
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2)
+  (electric-pair-mode 1))
+
+(use-package add-node-modules-path
+  :defer t
+  :hook (((js2-mode rjsx-mode) . add-node-modules-path)))
+
+(use-package prettier-js
+  :defer t
+  :diminish prettier-js-mode
+  :hook (((js2-mode rjsx-mode) . prettier-js-mode))
+  :init) ; (f)ormat (p)rettier
+
+;; https://github.com/purcell/exec-path-from-shell
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
+;; tmux
 (use-package! tmux-pane
   :config
   (tmux-pane-mode))
+
+;; Show indicators in the left margin
+(setq flycheck-indication-mode 'left-margin)
+
+;; open in new window
+(after! counsel
+  (ivy-add-actions
+   'counsel-fzf
+   '(("j" find-file-other-window "open in other window"))))
+
+
+;; Adjust margins and fringe widths…
+(defun my/set-flycheck-margins ()
+  (setq left-fringe-width 8 right-fringe-width 8
+        left-margin-width 1 right-margin-width 0)
+  (flycheck-refresh-fringes-and-margins))
+
+;; …every time Flycheck is activated in a new buffer
+(add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/Users/jku/bin:/Users/jku/.emacs.d/bin/:/Users/jku/go/bin:$PATH"
+export PATH="/Users/jku/bin:/Users/jku/.emacs.d/bin/:/Users/jku/.nvm/versions/node/v6.11.1/bin/:/Users/jku/go/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias em='TERM=screen-24bit emacsclient -t'
