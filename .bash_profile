@@ -68,3 +68,4 @@ fi
 # If AppleConnect does not work, you can get GROOT_GNSD_APP_ID and GROOT_GNSD_APP_KEY from  https://bits.corp.apple.com/support/?appName=groot
 # export GROOT_GNSD_APP_ID=XXX
 # export GROOT_GNSD_APP_KEY=XXX
+complete -C /usr/local/bin/bit bit

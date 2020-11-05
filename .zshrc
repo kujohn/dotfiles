@@ -120,6 +120,8 @@ alias em-restart="emacsclient -e '(kill-emacs)'; emacs --daemon"
 alias k='kubectl'
 alias d='docker'
 alias h='helm'
+alias ll='exa -la'
+alias ls='exa'
 
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1
@@ -130,3 +132,5 @@ zplug load
 autoload -U promptinit; promptinit
 prompt typewritten
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bit bit

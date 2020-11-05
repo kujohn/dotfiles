@@ -65,9 +65,9 @@
             (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
 ;; company
-(setq company-minimum-prefix-length 2
+(setq company-minimum-prefix-length 3
       company-tooltip-limit 15
-      company-idle-delay 0.2)
+      company-idle-delay 1)
 
 ;; tabnine
 (require 'company-tabnine)
@@ -97,6 +97,11 @@
 
 (global-set-key (kbd "C-g") 'treemacs)
 (global-set-key (kbd "M-`") '+vterm/toggle)
+
+;; no eval mode, remap to evil-ex mode
+(map! :leader
+      :desc "evil ex mode for fast saves" ";" #'evil-ex)
+
 ;; golang golang golang golang golang golang golang golang
 (add-hook 'before-save-hook 'gofmt-before-save)
 (setq gofmt-command "goimports")

@@ -59,4 +59,3 @@
 (package! company-tabnine)
 (package! exec-path-from-shell)
 (package! evil-escape :disable t)
-(package! zoom)
