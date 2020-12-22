@@ -122,6 +122,9 @@ alias d='docker'
 alias h='helm'
 alias ll='exa -la'
 alias ls='exa'
+alias kprod='kubectl config use-context us-east-1a --namespace dctools-miyagi-prod && kubectl config set-context us-east-1a --namespace dctools-miyagi-prod'
+alias kuat='kubectl config use-context us-east-1a --namespace dctools-miyagi-acc && kubectl config set-context us-east-1a --namespace dctools-miyagi-acc'
+alias kdev='kubectl config use-context us-east-1a --namespace dctools-miyagi-dev && kubectl config set-context us-east-1a --namespace dctools-miyagi-dev'
 
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1

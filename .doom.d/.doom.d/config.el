@@ -52,6 +52,8 @@
   "--single-quote" "true"
   "--bracket-spacing" "true"
 ))
+
+(setq-default tab-width 2)
 ;; allow look up to other window
 (dolist (fn '(definition references))
   (fset (intern (format "+lookup/%s-other-window" fn))
@@ -68,10 +70,12 @@
 (setq company-minimum-prefix-length 3
       company-tooltip-limit 15
       company-idle-delay 1)
+(global-set-key (kbd "ESC TAB") 'company-complete)
+
 
 ;; tabnine
-(require 'company-tabnine)
-(add-to-list 'company-backends #'company-tabnine)
+;;(require 'company-tabnine)
+;;(add-to-list 'company-backends #'company-tabnine)
 
 ;; look up
 (global-set-key (kbd "M-f") 'counsel-projectile-rg)
@@ -133,8 +137,8 @@
   :init) ; (f)ormat (p)rettier
 
 ;; https://github.com/purcell/exec-path-from-shell
-(when (daemonp)
-  (exec-path-from-shell-initialize))
+;;(when (daemonp)
+ ;; (exec-path-from-shell-initialize))
 
 ;; tmux
 (use-package! tmux-pane
@@ -145,10 +149,10 @@
 (setq flycheck-indication-mode 'left-margin)
 
 ;; open in new window
-(after! counsel
-  (ivy-add-actions
-   'counsel-fzf
-   '(("j" find-file-other-window "open in other window"))))
+;;(after! counsel
+;;  (ivy-add-actions
+;;   'counsel-fzf
+;;   '(("j" find-file-other-window "open in other window"))))
 
 
 ;; Adjust margins and fringe widths…
