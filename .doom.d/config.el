@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John K"
+(setq user-full-name "John Ku"
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -74,8 +74,8 @@
 
 
 ;; tabnine
-;;(require 'company-tabnine)
-;;(add-to-list 'company-backends #'company-tabnine)
+(require 'company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
 
 ;; look up
 (global-set-key (kbd "M-f") 'counsel-projectile-rg)
@@ -100,7 +100,6 @@
 (global-unset-key (kbd "M-j"))
 
 (global-set-key (kbd "C-g") 'treemacs)
-(global-set-key (kbd "M-`") '+vterm/toggle)
 
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
@@ -136,10 +135,6 @@
   :hook (((js2-mode rjsx-mode) . prettier-js-mode))
   :init) ; (f)ormat (p)rettier
 
-;; https://github.com/purcell/exec-path-from-shell
-;;(when (daemonp)
- ;; (exec-path-from-shell-initialize))
-
 ;; tmux
 (use-package! tmux-pane
   :config
@@ -147,13 +142,6 @@
 
 ;; Show indicators in the left margin
 (setq flycheck-indication-mode 'left-margin)
-
-;; open in new window
-;;(after! counsel
-;;  (ivy-add-actions
-;;   'counsel-fzf
-;;   '(("j" find-file-other-window "open in other window"))))
-
 
 ;; Adjust margins and fringe widths…
 (defun my/set-flycheck-margins ()

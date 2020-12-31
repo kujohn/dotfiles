@@ -1,24 +1,20 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export FZF_BASE=/opt/homebrew/bin/fzf
+export PATH=/opt/homebrew/bin:$HOME/.emacs.d/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jku/.oh-my-zsh"
- . /usr/local/etc/profile.d/z.sh
+export ZSH="/Users/johnku/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-fpath+=$HOME/.zsh/typewritten
-autoload -U promptinit; promptinit
-prompt typewritten
-TYPEWRITTEN_PROMPT_LAYOUT="pure"
-TYPEWRITTEN_CURSOR="block"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -39,7 +35,7 @@ TYPEWRITTEN_CURSOR="block"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -70,19 +66,15 @@ TYPEWRITTEN_CURSOR="block"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  dotenv
   fzf
   git-prompt
   history
-  kubectl
-  helm
-  docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -112,28 +104,20 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/Users/jku/bin:/Users/jku/.emacs.d/bin/:/Users/jku/.nvm/versions/node/v6.11.1/bin/:/Users/jku/go/bin:$PATH"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias em='TERM=screen-24bit emacsclient -t'
-alias em-restart="emacsclient -e '(kill-emacs)'; emacs --daemon"
-alias k='kubectl'
-alias d='docker'
-alias h='helm'
-alias ll='exa -la'
-alias ls='exa'
-alias kprod='kubectl config use-context us-east-1a --namespace dctools-miyagi-prod && kubectl config set-context us-east-1a --namespace dctools-miyagi-prod'
-alias kuat='kubectl config use-context us-east-1a --namespace dctools-miyagi-acc && kubectl config set-context us-east-1a --namespace dctools-miyagi-acc'
-alias kdev='kubectl config use-context us-east-1a --namespace dctools-miyagi-dev && kubectl config set-context us-east-1a --namespace dctools-miyagi-dev'
 
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 zplug load
 
+. /opt/homebrew/etc/profile.d/z.sh
+
+alias ll="ls -la"
+alias ed='emacs --daemon'
+alias e='emacsclient --tty'
+
+
 # Set typewritten ZSH as a prompt
+fpath+=$HOME/.zsh/typewritten
 autoload -U promptinit; promptinit
 prompt typewritten
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/bit bit
