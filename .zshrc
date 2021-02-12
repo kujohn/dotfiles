@@ -9,12 +9,8 @@ export ZSH="/Users/jku/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-fpath+=$HOME/.zsh/typewritten
-autoload -U promptinit; promptinit
-prompt typewritten
-TYPEWRITTEN_PROMPT_LAYOUT="pure"
-TYPEWRITTEN_CURSOR="block"
+ZSH_THEME="af-magic"
+# autoload -U promptinit; promptinit
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -76,7 +72,6 @@ TYPEWRITTEN_CURSOR="block"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  dotenv
   fzf
   git-prompt
   history
@@ -126,14 +121,25 @@ alias kprod='kubectl config use-context us-east-1a --namespace dctools-miyagi-pr
 alias kuat='kubectl config use-context us-east-1a --namespace dctools-miyagi-acc && kubectl config set-context us-east-1a --namespace dctools-miyagi-acc'
 alias kdev='kubectl config use-context us-east-1a --namespace dctools-miyagi-dev && kubectl config set-context us-east-1a --namespace dctools-miyagi-dev'
 
+alias controller-push-dev='
+z controller
+d build -t docker.apple.com/dctools/miyagi/controller:develop .
+d push docker.apple.com/dctools/miyagi/controller:develop
+z helm
+helm upgrade miyagi . -f ./values/dev.yaml
+'
+alias controller-d-build='d build -t docker.apple.com/dctools/miyagi/controller:develop .'
+alias controller-d-push='d push docker.apple.com/dctools/miyagi/controller:develop'
+
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 zplug load
 
-# Set typewritten ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt typewritten
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/bit bit
+
+# Set typewritten ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt typewritten
