@@ -7,6 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "John K"
+      doom-theme 'doom-monokai-spectrum
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -16,6 +17,11 @@
 ;; + `doom-variable-pitch-font'
 ;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
+;; (setq doom-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book)
+;;       doom-variable-pitch-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book))
+
+(setq doom-font (font-spec :family "Operator Mono" :weight 'Medium))
+
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
@@ -23,9 +29,8 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
+;; available. You can eitherOperator Mono for Powerline set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-themes-treemacs-theme "Default")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -41,9 +46,6 @@
 ;; magit
 ;;(setq magit-git-executable "/usr/local/bin/git")
 ;;(setq magit-refresh-status-buffer nil)
-
-(setq doom-font (font-spec :family "Operator Mono" :size 12 :weight 'Light)
-      doom-variable-pitch-font (font-spec :family "Operator Mono" :size 12 :weight 'Light))
 
 ;; prettier settings
 (setq prettier-js-args '(
@@ -67,15 +69,14 @@
             (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
 ;; company
-(setq company-minimum-prefix-length 3
-      company-tooltip-limit 15
-      company-idle-delay 1)
-(global-set-key (kbd "ESC TAB") 'company-complete)
-
+;; (setq company-minimum-prefix-length 3
+;;       company-tooltip-limit 15
+;;       company-idle-delay 1)
+;; (global-set-key (kbd "ESC TAB") 'company-complete)
 
 ;; tabnine
-;;(require 'company-tabnine)
-;;(add-to-list 'company-backends #'company-tabnine)
+(require 'company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
 
 ;; look up
 (global-set-key (kbd "M-f") 'counsel-projectile-rg)
@@ -106,6 +107,7 @@
 (map! :leader
       :desc "evil ex mode for fast saves" ";" #'evil-ex)
 
+
 ;; golang golang golang golang golang golang golang golang
 (add-hook 'before-save-hook 'gofmt-before-save)
 (setq gofmt-command "goimports")
@@ -126,9 +128,9 @@
         js-indent-level 2)
   (electric-pair-mode 1))
 
-(use-package add-node-modules-path
-  :defer t
-  :hook (((js2-mode rjsx-mode) . add-node-modules-path)))
+;; (use-package add-node-modules-path
+;;   :defer t
+;;   :hook (((js2-mode rjsx-mode) . add-node-modules-path)))
 
 (use-package prettier-js
   :defer t
@@ -141,9 +143,9 @@
  ;; (exec-path-from-shell-initialize))
 
 ;; tmux
-(use-package! tmux-pane
-  :config
-  (tmux-pane-mode))
+;; (use-package! tmux-pane
+;;   :config
+;;   (tmux-pane-mode))
 
 ;; Show indicators in the left margin
 (setq flycheck-indication-mode 'left-margin)

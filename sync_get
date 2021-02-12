@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp -r ~/.doom.d ./.doom.d
+cp -r ~/.doom.d/ ./.doom.d/
 cp -r ~/.config/nvim .config/
 cp -r ~/.config/kitty .config/
 cp -r ~/.config/tmuxinator .config/
