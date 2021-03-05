@@ -55,6 +55,9 @@
   "--bracket-spacing" "true"
 ))
 
+;; disable keyboard yanking
+(remove-hook 'tty-setup-hook 'doom-init-clipboard-in-tty-emacs-h)
+
 (setq-default tab-width 2)
 ;; allow look up to other window
 (dolist (fn '(definition references))

@@ -69,3 +69,5 @@ fi
 # export GROOT_GNSD_APP_ID=XXX
 # export GROOT_GNSD_APP_KEY=XXX
 complete -C /usr/local/bin/bit bit
+# You can get GITHUB_TOKEN from https://github.pie.apple.com/settings/tokens
+# export GITHUB_TOKEN=XXX

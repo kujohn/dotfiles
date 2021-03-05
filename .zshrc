@@ -72,8 +72,8 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  fzf
   git-prompt
+  fzf
   history
   kubectl
   helm
@@ -81,6 +81,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.env
 
 # User configuration
 
@@ -143,3 +144,6 @@ complete -o nospace -C /usr/local/bin/bit bit
 # Set typewritten ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt typewritten
+[[ :$PATH: == *:$HOME/bin:* ]] || PATH=$HOME/bin:$PATH
+# You can get GITHUB_TOKEN from https://github.pie.apple.com/settings/tokens
+# export GITHUB_TOKEN=XXX
