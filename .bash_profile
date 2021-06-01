@@ -71,3 +71,24 @@ fi
 complete -C /usr/local/bin/bit bit
 # You can get GITHUB_TOKEN from https://github.pie.apple.com/settings/tokens
 # export GITHUB_TOKEN=XXX
+# export CAPRI_A3_ID=XXX
+# export CAPRI_A3_KEY=XXX
+# export CAPRI_A3_CONTEXT=XXX
+# export ADB_A3_ID=XXX
+# export ADB_A3_KEY=XXX
+# export ADB_A3_CONTEXT=XXX
+# If AppleConnect does not work, you can get ADBLM_APP_ID and ADBLM_APP_KEY from  the developer team
+# export ADBLM_APP_ID=XXX
+# export ADBLM_APP_KEY=XXX
+# If AppleConnect does not work, you can get ADBREPAIR_APP_ID and ADBREPAIR_APP_KEY from  the developer team
+# export ADBREPAIR_APP_ID=XXX
+# export ADBREPAIR_APP_KEY=XXX
+# If AppleConnect does not work, you can get AIRFOILWING_APP_ID and AIRFOILWING_APP_KEY from  the developer team
+# export AIRFOILWING_APP_ID=XXX
+# export AIRFOILWING_APP_KEY=XXX
+# If AppleConnect does not work, you can get DCI_APP_ID and DCI_APP_KEY from  the DCI support team
+# export DCI_APP_ID=XXX
+# export DCI_APP_KEY=XXX
+# export DCI_A3_ID=XXX
+# export DCI_A3_KEY=XXX
+# export DCI_A3_CONTEXT=XXX

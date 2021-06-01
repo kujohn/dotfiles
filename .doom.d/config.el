@@ -81,12 +81,17 @@
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 
+;; git gutter
+(global-git-gutter-mode t)
+
 ;; look up
-(global-set-key (kbd "M-f") 'counsel-projectile-rg)
+(global-set-key (kbd "M-f") 'counsel-ag)
 (global-set-key (kbd "M-z") 'avy-goto-word-0)
+(global-set-key (kbd "M-a") 'avy-goto-char-timer)
 (global-set-key (kbd "M-g") 'godoc-at-point)
 (global-set-key (kbd "M-d") '+lookup/definition-other-window)
 (global-set-key (kbd "M-r") '+lookup/references)
+(global-set-key (kbd "C-i") 'better-jumper-jump-forward)
 
 ;; buffer, windows, workspaces
 (global-set-key (kbd "C-h") 'evil-window-left)
@@ -98,13 +103,15 @@
 
 (global-set-key (kbd "M-h") '+workspace/switch-left)
 (global-set-key (kbd "M-l") '+workspace/switch-right)
-(global-set-key (kbd "M-i") 'next-buffer)
-(global-set-key (kbd "M-o") 'previous-buffer)
 (global-unset-key (kbd "M-k"))
 (global-unset-key (kbd "M-j"))
-
+(global-set-key (kbd "M-j") 'git-gutter:next-hunk)
+(global-set-key (kbd "M-k") 'git-gutter:previous-hunk)
+(global-set-key (kbd "M-i") 'helm-ls-git-ls)
 (global-set-key (kbd "C-g") 'treemacs)
-(global-set-key (kbd "M-`") '+vterm/toggle)
+;;(global-set-key (kbd "M-`") 'counsel-evil-marks)
+;;(global-set-key (kbd "M-i") 'next-buffer)
+;;(global-set-key (kbd "M-o") 'previous-buffer)
 
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
@@ -140,6 +147,7 @@
   :diminish prettier-js-mode
   :hook (((js2-mode rjsx-mode) . prettier-js-mode))
   :init) ; (f)ormat (p)rettier
+
 
 ;; https://github.com/purcell/exec-path-from-shell
 ;;(when (daemonp)

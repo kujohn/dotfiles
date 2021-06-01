@@ -22,8 +22,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sbdchd/neoformat'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
-Plug 'baverman/vial'
-Plug 'baverman/vial-http'
+" Plug 'baverman/vial'
+" Plug 'baverman/vial-http'
 Plug 'vim-syntastic/syntastic'
 "Plug 'thaerkh/vim-workspace'
 Plug 'vim-ctrlspace/vim-ctrlspace'
@@ -41,12 +41,12 @@ Plug 'arcticicestudio/nord-vim'
 "Plug 'venantius/vim-eastwood'
 
 " Language Server
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 call plug#end()

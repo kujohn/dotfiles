@@ -151,23 +151,23 @@ let g:signify_sign_change            = '~'
 let g:signify_sign_changedelete      = g:signify_sign_change
 
 
-" deoplete
-set hidden
-let g:deoplete#enable_at_startup = 1
-let g:autocomplete_flow#insert_paren_after_function = 0
-call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
-let g:LanguageClient_serverCommands = {
-  \ 'go': ['gopls'],
-  \ 'css': ['css-languageserver',  '--stdio'],
-  \ 'less': ['css-languageserver',  '--stdio'],
-  \ 'sass': ['css-languageserver',  '--stdio'],
-  \ 'stylus': ['css-languageserver',  '--stdio'],
-  \ 'javascript': ['typescript-language-server',  '--stdio'],
-  \ 'javascript.jsx': ['typescript-language-server',  '--stdio'],
-  \ 'typescript': ['typescript-language-server',  '--stdio'],
-  \ 'typescript.tsx': ['typescript-language-server',  '--stdio'],
-  \ 'clojure': ['bash', '-c', 'clojure-lsp'],
-  \ }
+" " deoplete
+" set hidden
+" let g:deoplete#enable_at_startup = 1
+" let g:autocomplete_flow#insert_paren_after_function = 0
+" call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
+" let g:LanguageClient_serverCommands = {
+"   \ 'go': ['gopls'],
+"   \ 'css': ['css-languageserver',  '--stdio'],
+"   \ 'less': ['css-languageserver',  '--stdio'],
+"   \ 'sass': ['css-languageserver',  '--stdio'],
+"   \ 'stylus': ['css-languageserver',  '--stdio'],
+"   \ 'javascript': ['typescript-language-server',  '--stdio'],
+"   \ 'javascript.jsx': ['typescript-language-server',  '--stdio'],
+"   \ 'typescript': ['typescript-language-server',  '--stdio'],
+"   \ 'typescript.tsx': ['typescript-language-server',  '--stdio'],
+"   \ 'clojure': ['bash', '-c', 'clojure-lsp'],
+"   \ }
 
 let g:clj_fmt_autosave = 0
 nnoremap <leader>c :Cljfmt<CR>
@@ -185,11 +185,11 @@ let g:workspace_create_new_tabs = 0  " enabled = 1 (default), disabled = 0
 let g:workspace_autosave_always = 1
 let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 
-if has('win32') || has('win64')
-  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-else
-  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-endif
+" if has('win32') || has('win64')
+"   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+" else
+"   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" endif
 
 " syntasticset statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
