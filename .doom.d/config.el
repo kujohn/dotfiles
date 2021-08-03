@@ -43,22 +43,17 @@
 (setq avy-all-windows t)
 (setq mac-command-modifier 'super)
 
-;; magit
-;;(setq magit-git-executable "/usr/local/bin/git")
-;;(setq magit-refresh-status-buffer nil)
-
-;; prettier settings
-(setq prettier-js-args '(
-  "--trailing-comma" "none"
-  "--semi" "true"
-  "--single-quote" "true"
-  "--bracket-spacing" "true"
-))
+;; helm
+(require 'helm-config)
+(require 'helm)
+(setq helm-autoresize-max-height 60)
+(helm-autoresize-mode 1)
 
 ;; disable keyboard yanking
 (remove-hook 'tty-setup-hook 'doom-init-clipboard-in-tty-emacs-h)
 
 (setq-default tab-width 2)
+(setq tab-width 2)
 ;; allow look up to other window
 (dolist (fn '(definition references))
   (fset (intern (format "+lookup/%s-other-window" fn))
@@ -71,23 +66,30 @@
             (goto-char pt)
             (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
-;; company
-;; (setq company-minimum-prefix-length 3
-;;       company-tooltip-limit 15
-;;       company-idle-delay 1)
-;; (global-set-key (kbd "ESC TAB") 'company-complete)
-
 ;; tabnine
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
+
+;; company
+(setq company-minimum-prefix-length 4
+      company-tooltip-limit 15
+      company-idle-delay 1)
+;; (global-set-key (kbd "ESC TAB") 'company-complete)
+
+
+;; doom modeline
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+
+;; solaire
+(solaire-global-mode +1)
 
 ;; git gutter
 (global-git-gutter-mode t)
 
 ;; look up
-(global-set-key (kbd "M-f") 'counsel-ag)
-(global-set-key (kbd "M-z") 'avy-goto-word-0)
-(global-set-key (kbd "M-a") 'avy-goto-char-timer)
+(global-set-key (kbd "M-f") 'helm-do-ag-project-root)
+(global-set-key (kbd "M-p") 'avy-goto-word-0)
 (global-set-key (kbd "M-g") 'godoc-at-point)
 (global-set-key (kbd "M-d") '+lookup/definition-other-window)
 (global-set-key (kbd "M-r") '+lookup/references)
@@ -108,10 +110,8 @@
 (global-set-key (kbd "M-j") 'git-gutter:next-hunk)
 (global-set-key (kbd "M-k") 'git-gutter:previous-hunk)
 (global-set-key (kbd "M-i") 'helm-ls-git-ls)
+
 (global-set-key (kbd "C-g") 'treemacs)
-;;(global-set-key (kbd "M-`") 'counsel-evil-marks)
-;;(global-set-key (kbd "M-i") 'next-buffer)
-;;(global-set-key (kbd "M-o") 'previous-buffer)
 
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
@@ -138,35 +138,22 @@
         js-indent-level 2)
   (electric-pair-mode 1))
 
-;; (use-package add-node-modules-path
-;;   :defer t
-;;   :hook (((js2-mode rjsx-mode) . add-node-modules-path)))
-
 (use-package prettier-js
   :defer t
   :diminish prettier-js-mode
   :hook (((js2-mode rjsx-mode) . prettier-js-mode))
   :init) ; (f)ormat (p)rettier
 
-
-;; https://github.com/purcell/exec-path-from-shell
-;;(when (daemonp)
- ;; (exec-path-from-shell-initialize))
-
-;; tmux
-;; (use-package! tmux-pane
-;;   :config
-;;   (tmux-pane-mode))
+;; prettier settings
+;; (setq prettier-js-args '(
+;;   "--trailing-comma" "none"
+;;   "--semi" "true"
+;;   "--single-quote" "true"
+;;   "--bracket-spacing" "true"
+;; ))
 
 ;; Show indicators in the left margin
 (setq flycheck-indication-mode 'left-margin)
-
-;; open in new window
-;;(after! counsel
-;;  (ivy-add-actions
-;;   'counsel-fzf
-;;   '(("j" find-file-other-window "open in other window"))))
-
 
 ;; Adjust margins and fringe widths…
 (defun my/set-flycheck-margins ()
@@ -192,4 +179,3 @@
 ;; This will open documentation for it, including demos of how they are used.
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.

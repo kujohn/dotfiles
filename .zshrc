@@ -115,14 +115,11 @@ alias em='TERM=screen-24bit emacsclient -t'
 alias em-kill="kill -9 $(ps aux | grep 'emacs-plus\@' | awk '{print $2}' | sed)"
 alias em-restart="em-kill; emacsclient -e '(kill-emacs)'; emacs --daemon"
 alias k='kubectl'
+alias w='whisper-admin'
 alias d='docker'
 alias h='helm'
 alias ll='exa -la'
 alias ls='exa'
-alias kprod='kubectl config use-context us-east-1a --namespace dctools-miyagi-prod && kubectl config set-context us-east-1a --namespace dctools-miyagi-prod'
-alias kuat='kubectl config use-context us-east-1a --namespace dctools-miyagi-acc && kubectl config set-context us-east-1a --namespace dctools-miyagi-acc'
-alias kdev='kubectl config use-context us-east-1a --namespace dctools-miyagi-dev && kubectl config set-context us-east-1a --namespace dctools-miyagi-dev'
-alias mdrive='kubectl config use-context us-east-1a --namespace dctools-miyagi-stg && kubectl config set-context us-east-1a --namespace dctools-miyagi-stg'
 alias vim='nvim'
 
 alias drive-refresh='
