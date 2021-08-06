@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "John K"
-      doom-theme 'doom-monokai-spectrum
+      doom-theme 'doom-1337
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -43,11 +43,11 @@
 (setq avy-all-windows t)
 (setq mac-command-modifier 'super)
 
-;; helm
-(require 'helm-config)
-(require 'helm)
-(setq helm-autoresize-max-height 60)
-(helm-autoresize-mode 1)
+;; ;; helm
+;; (require 'helm-config)
+;; (require 'helm)
+;; (setq helm-autoresize-max-height 30)
+;; (helm-autoresize-mode 1)
 
 ;; disable keyboard yanking
 (remove-hook 'tty-setup-hook 'doom-init-clipboard-in-tty-emacs-h)
@@ -66,16 +66,27 @@
             (goto-char pt)
             (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
-;; tabnine
+;; company / tabnine
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-minimum-prefix-length 3
+      company-show-numbers t
+      company-tooltip-limit 10
+      company-idle-delay 0)
+(company-tng-mode)
 
-;; company
-(setq company-minimum-prefix-length 4
-      company-tooltip-limit 15
-      company-idle-delay 1)
-;; (global-set-key (kbd "ESC TAB") 'company-complete)
+;; prescient
+(ivy-prescient-mode +1)
+(company-prescient-mode +1)
+(prescient-persist-mode +1)
 
+;; orderless
+(setq completion-styles '(orderless))
+(setq ivy-re-builders-alist '((t . orderless-ivy-re-builder)))
+
+;; dimmer
+ (dimmer-mode t)
 
 ;; doom modeline
 (require 'doom-modeline)
@@ -88,8 +99,9 @@
 (global-git-gutter-mode t)
 
 ;; look up
-(global-set-key (kbd "M-f") 'helm-do-ag-project-root)
+(global-set-key (kbd "M-f") '+ivy/project-search)
 (global-set-key (kbd "M-p") 'avy-goto-word-0)
+(global-set-key (kbd "M-i") 'avy-goto-line)
 (global-set-key (kbd "M-g") 'godoc-at-point)
 (global-set-key (kbd "M-d") '+lookup/definition-other-window)
 (global-set-key (kbd "M-r") '+lookup/references)
@@ -109,9 +121,9 @@
 (global-unset-key (kbd "M-j"))
 (global-set-key (kbd "M-j") 'git-gutter:next-hunk)
 (global-set-key (kbd "M-k") 'git-gutter:previous-hunk)
-(global-set-key (kbd "M-i") 'helm-ls-git-ls)
 
-(global-set-key (kbd "C-g") 'treemacs)
+(global-set-key (kbd "C-s") 'treemacs)
+(global-set-key (kbd "C-g") 'treemacs-select-window)
 
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
@@ -125,12 +137,11 @@
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
 
-;; frontend frontend frontend frontend frontend frontend frontend frontend frontend
-(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
-
 (use-package rjsx-mode
   :mode ("\\.js\\'"
-         "\\.jsx\\'")
+         "\\.jsx\\'"
+         "\\.ts\\'"
+         "\\.tsx\\'")
   :config
   (setq js2-mode-show-parse-errors nil
         js2-mode-show-strict-warnings nil
@@ -145,12 +156,12 @@
   :init) ; (f)ormat (p)rettier
 
 ;; prettier settings
-;; (setq prettier-js-args '(
-;;   "--trailing-comma" "none"
-;;   "--semi" "true"
-;;   "--single-quote" "true"
-;;   "--bracket-spacing" "true"
-;; ))
+;;(setq prettier-js-args '(
+;;  "--trailing-comma" "none"
+;;  "--semi" "true"
+;;  "--single-quote" "true"
+;;  "--bracket-spacing" "true"
+;;))
 
 ;; Show indicators in the left margin
 (setq flycheck-indication-mode 'left-margin)
