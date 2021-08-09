@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "John K"
-      doom-theme 'doom-1337
+      doom-theme 'doom-badger
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -69,12 +69,13 @@
 ;; company / tabnine
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-minimum-prefix-length 3
-      company-show-numbers t
-      company-tooltip-limit 10
-      company-idle-delay 0)
-(company-tng-mode)
+(setq company-minimum-prefix-length 4
+      company-tooltip-limit 5
+      company-idle-delay 0.05)
+(setq lsp-prefer-capf t)
+(company-tng-mode t)
+(global-company-mode)
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 ;; prescient
 (ivy-prescient-mode +1)
@@ -84,9 +85,6 @@
 ;; orderless
 (setq completion-styles '(orderless))
 (setq ivy-re-builders-alist '((t . orderless-ivy-re-builder)))
-
-;; dimmer
- (dimmer-mode t)
 
 ;; doom modeline
 (require 'doom-modeline)
@@ -99,7 +97,7 @@
 (global-git-gutter-mode t)
 
 ;; look up
-(global-set-key (kbd "M-f") '+ivy/project-search)
+(global-set-key (kbd "M-s") '+ivy/project-search)
 (global-set-key (kbd "M-p") 'avy-goto-word-0)
 (global-set-key (kbd "M-i") 'avy-goto-line)
 (global-set-key (kbd "M-g") 'godoc-at-point)
@@ -163,17 +161,15 @@
 ;;  "--bracket-spacing" "true"
 ;;))
 
-;; Show indicators in the left margin
+;; flycheck
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
 (setq flycheck-indication-mode 'left-margin)
-
-;; Adjust margins and fringe widths…
 (defun my/set-flycheck-margins ()
   (setq left-fringe-width 8 right-fringe-width 8
         left-margin-width 1 right-margin-width 0)
   (flycheck-refresh-fringes-and-margins))
-
-;; …every time Flycheck is activated in a new buffer
 (add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
+(global-flycheck-mode t)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
