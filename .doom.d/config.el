@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John K"
-      doom-theme 'doom-badger
+(setq user-full-name "John Ku"
+      doom-theme 'doom-old-hope
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -20,7 +20,7 @@
 ;; (setq doom-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book)
 ;;       doom-variable-pitch-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book))
 
-(setq doom-font (font-spec :family "Operator Mono" :weight 'Book))
+(setq doom-font (font-spec :family "Operator Mono SSm" :weight 'Book))
 
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
@@ -62,7 +62,7 @@
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 (setq company-minimum-prefix-length 4
-      company-tooltip-limit 5
+      company-tooltip-limit 15
       company-idle-delay 0.05)
 (setq lsp-prefer-capf t)
 (company-tng-mode t)
@@ -126,10 +126,10 @@
 (global-unset-key (kbd "M-j"))
 (global-set-key (kbd "M-j") 'git-gutter:next-hunk)
 (global-set-key (kbd "M-k") 'git-gutter:previous-hunk)
+(global-set-key (kbd "M-c") 'lsp-rename)
 
 (global-set-key (kbd "C-s") 'treemacs)
 (global-set-key (kbd "C-g") 'treemacs-select-window)
-
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
       :desc "evil ex mode for fast saves" ";" #'evil-ex)
