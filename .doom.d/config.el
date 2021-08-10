@@ -20,7 +20,7 @@
 ;; (setq doom-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book)
 ;;       doom-variable-pitch-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book))
 
-(setq doom-font (font-spec :family "Operator Mono" :weight 'Medium))
+(setq doom-font (font-spec :family "Operator Mono" :weight 'Book))
 
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
@@ -38,16 +38,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-;;(setq display-line-numbers-type nil)
-;;(setq auto-window-vscroll nil)
 (setq avy-all-windows t)
 (setq mac-command-modifier 'super)
-
-;; ;; helm
-;; (require 'helm-config)
-;; (require 'helm)
-;; (setq helm-autoresize-max-height 30)
-;; (helm-autoresize-mode 1)
 
 ;; disable keyboard yanking
 (remove-hook 'tty-setup-hook 'doom-init-clipboard-in-tty-emacs-h)
@@ -76,6 +68,21 @@
 (company-tng-mode t)
 (global-company-mode)
 (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+
+;; lsp improvements
+(setq gc-cons-threshold 100000000)
+(setq lsp-idle-delay 0.500)
+(setq read-process-output-max (* 1024 1024))
+(setq lsp-log-io nil)
+
+;; doom-modeline
+(setq doom-modeline-buffer-encoding nil)
+(setq doom-modeline-indent-info nil)
+(setq doom-modeline-checker-simple-format t)
+(setq doom-modeline-workspace-name nil)
+(setq doom-modeline-persp-name nil)
+(setq doom-modeline-lsp nil)
+
 
 ;; prescient
 (ivy-prescient-mode +1)

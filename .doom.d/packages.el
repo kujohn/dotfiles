@@ -64,6 +64,3 @@
 (package! ivy-prescient)
 (package! company-prescient)
 (package! orderless)
-;;(package! verb)
-;; (package! org-pomodoro)
-;; (package! magit)
