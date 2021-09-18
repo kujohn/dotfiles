@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "John Ku"
-      doom-theme 'doom-old-hope
+      doom-theme 'doom-molokai
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -46,6 +46,7 @@
 
 (setq-default tab-width 2)
 (setq tab-width 2)
+
 ;; allow look up to other window
 (dolist (fn '(definition references))
   (fset (intern (format "+lookup/%s-other-window" fn))
@@ -58,22 +59,20 @@
             (goto-char pt)
             (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
-;; company / tabnine
+;; company / tabnine / lsp
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 (setq company-minimum-prefix-length 4
-      company-tooltip-limit 15
-      company-idle-delay 0.05)
+      company-tooltip-limit 10
+      company-idle-delay 0.5)
 (setq lsp-prefer-capf t)
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024))
+(setq lsp-idle-delay 0.500)
+(setq lsp-on-idle-hook nil)
+(setq lsp-log-io nil)
 (company-tng-mode t)
 (global-company-mode)
-(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
-
-;; lsp improvements
-(setq gc-cons-threshold 100000000)
-(setq lsp-idle-delay 0.500)
-(setq read-process-output-max (* 1024 1024))
-(setq lsp-log-io nil)
 
 ;; doom-modeline
 (setq doom-modeline-buffer-encoding nil)
@@ -83,6 +82,11 @@
 (setq doom-modeline-persp-name nil)
 (setq doom-modeline-lsp nil)
 
+
+;; webmode
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
 ;; prescient
 (ivy-prescient-mode +1)
@@ -103,12 +107,18 @@
 ;; git gutter
 (global-git-gutter-mode t)
 
+;; web hook prettier
+(setq-hook! 'web-mode-hook +format-with 'prettier-prettify)
+
+
 ;; look up
-(global-set-key (kbd "M-s") '+ivy/project-search)
+;; (global-set-key (kbd "M-s") '+ivy/project-search)
 (global-set-key (kbd "M-p") 'avy-goto-word-0)
+(global-set-key (kbd "M-o") 'avy-goto-char-timer)
 (global-set-key (kbd "M-i") 'avy-goto-line)
 (global-set-key (kbd "M-g") 'godoc-at-point)
-(global-set-key (kbd "M-d") '+lookup/definition-other-window)
+(global-set-key (kbd "M-f") '+ivy/project-search)
+(global-set-key (kbd "M-d") '+lookup/definition-otherk-window)
 (global-set-key (kbd "M-r") '+lookup/references)
 (global-set-key (kbd "C-i") 'better-jumper-jump-forward)
 
@@ -135,7 +145,7 @@
       :desc "evil ex mode for fast saves" ";" #'evil-ex)
 
 
-;; golang golang golang golang golang golang golang golang
+;; golang
 (add-hook 'before-save-hook 'gofmt-before-save)
 (setq gofmt-command "goimports")
   (if (not (string-match "go" compile-command))   ; set compile command default
@@ -169,14 +179,14 @@
 ;;))
 
 ;; flycheck
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(setq flycheck-check-syntax-automatically '(save))
 (setq flycheck-indication-mode 'left-margin)
 (defun my/set-flycheck-margins ()
   (setq left-fringe-width 8 right-fringe-width 8
         left-margin-width 1 right-margin-width 0)
   (flycheck-refresh-fringes-and-margins))
 (add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
-(global-flycheck-mode t)
+(global-flycheck-mode nil)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
