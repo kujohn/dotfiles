@@ -1,13 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
+;;;
 (setq user-full-name "John Ku"
-      doom-theme 'doom-horizon
+      doom-theme 'doom-material
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -23,22 +17,7 @@
 (setq doom-font (font-spec :family "DM Mono" :weight 'Regular))
 
 ;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can eitherOperator Mono for Powerline set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq avy-all-windows t)
 (setq mac-command-modifier 'super)
 
 ;; disable keyboard yanking
@@ -74,12 +53,24 @@
 (company-tng-mode t)
 (global-company-mode)
 
-;; doom-modeline
+;; doom-modeli
 (after! doom-modeline
   (doom-modeline-def-modeline 'main
-    '(matches buffer-info )
-    '(minor-modes checker major-mode"  ")))
+    '(matches buffer-info)
+    '(checker major-mode)))
 
+;; yas
+(global-yascroll-bar-mode 1)
+
+;; mlscroll
+;; (use-package mlscroll
+;;   :ensure t
+;;   :init
+;;   (setq mlscroll-right-align nil)
+;;   (add-to-list 'mode-line-misc-info '(:eval (mlscroll-mode-line)) 'append)
+;;   (setq mlscroll-width-chars 15)
+;;   :config
+;;   (mlscroll-mode 1))
 
 ;; webmode
 (setq web-mode-markup-indent-offset 2)
@@ -106,19 +97,25 @@
   :config
   (tmux-pane-mode))
 
-;; look up
-(global-set-key (kbd "M-u") 'avy-goto-word-0)
-(global-set-key (kbd "M-a") 'avy-goto-word-0)
-(global-set-key (kbd "M-o") 'avy-goto-char-timer)
-(global-set-key (kbd "M-i") 'avy-goto-line)
+;; bindings
 (global-set-key (kbd "M-g") 'godoc-at-point)
 (global-set-key (kbd "M-f") '+ivy/project-search)
 (global-set-key (kbd "M-d") '+lookup/definition-otherk-window)
 (global-set-key (kbd "M-r") '+lookup/references)
+
 (global-unset-key (kbd "M-k"))
 (global-unset-key (kbd "M-j"))
 (global-set-key (kbd "M-j") 'git-gutter:next-hunk)
 (global-set-key (kbd "M-k") 'git-gutter:previous-hunk) ;
+
+;; avy
+(setq avy-all-windows nil)
+(global-set-key (kbd "M-a") 'avy-goto-word-0)
+(map! :leader "a" 'avy-goto-word-0)
+
+;; fringe marks
+(global-evil-fringe-mark-mode)
+(map! :leader "s" 'counsel-evil-marks)
 
 ;; buffer, windows, workspaces
 (global-set-key (kbd "C-h") 'evil-window-left)
@@ -133,13 +130,11 @@
 (global-set-key (kbd "C-g") 'treemacs-select-window)
 
 ;; misc
-;;(global-set-key (kbd "M-c") 'lsp-rename)
-;;(global-set-key (kbd "C-i") 'better-jumper-jump-forward)
+(map! :leader "r" 'lsp-rename)
 
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
       :desc "evil ex mode for fast saves" ";" #'evil-ex)
-
 
 ;; golang
 (add-hook 'before-save-hook 'gofmt-before-save)
@@ -148,6 +143,7 @@
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
 
+;; rjsx
 (use-package rjsx-mode
   :config
   (setq js2-mode-show-parse-errors nil
@@ -161,7 +157,7 @@
   :defer t
   :diminish prettier-js-mode
   :hook (((js2-mode rjsx-mode web-mode typescript-mode) . prettier-js-mode))
-  :init) ; (f)ormat (p)rettier
+  :init)
 
 
 ;; prettier settings
@@ -180,7 +176,6 @@
         left-margin-width 1 right-margin-width 0)
   (flycheck-refresh-fringes-and-margins))
 (add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
-(global-flycheck-mode nil)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
