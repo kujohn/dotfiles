@@ -12,8 +12,11 @@ autoload -U promptinit; promptinit
 prompt pure
 
 plugins=(
-  ag
   git
+  kubectl
+  kubectx
+  kube-ps1
+  ag
   fzf
   history
   docker
@@ -29,13 +32,16 @@ export PATH="/Users/jku/bin:/Users/jku/.emacs.d/bin/:/Users/jku/.nvm/versions/no
 alias em='TERM=screen-24bit emacsclient -t'
 alias em-kill="kill -9 $(ps aux | grep 'emacs-plus\@' | awk '{print $2}' | sed)"
 alias em-restart="em-kill; emacsclient -e '(kill-emacs)'; emacs --daemon"
+alias emm="em-restart; em"
 alias k='kubectl'
+alias kc='kubectx'
 alias w='whisper-admin'
-alias d='docker'
+alias d='go doc'
 alias h='helm'
 alias ll='exa -la'
 alias ls='exa'
 alias vim='nvim'
+alias token='appleconnect serviceTicket -n --realm=APPLECONNECT-UAT.APPLE.COM serviceHost=api-isd-candlestick-dev.us-west-1a.app.apple.com --dawToken --appId=151513'
 
 source ~/.zplug/init.zsh
 zplug "changyuheng/fz", defer:1
@@ -53,3 +59,5 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ :$PATH: == *:$HOME/bin:* ]] || PATH=$HOME/bin:$PATH
 . ~/.isd-cli-autocomplete-zsh
+alias k=kubectl
+complete -F __start_kubectl k

@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "John Ku"
-      doom-theme 'doom-molokai
+      doom-theme 'doom-horizon
       user-mail-address "hellojohnku@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -20,7 +20,7 @@
 ;; (setq doom-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book)
 ;;       doom-variable-pitch-font (font-spec :family "Operator Mono for Powerline" :size 12 :weight 'Book))
 
-(setq doom-font (font-spec :family "Operator Mono SSm" :weight 'Book))
+(setq doom-font (font-spec :family "DM Mono" :weight 'Regular))
 
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
@@ -75,12 +75,10 @@
 (global-company-mode)
 
 ;; doom-modeline
-(setq doom-modeline-buffer-encoding nil)
-(setq doom-modeline-indent-info nil)
-(setq doom-modeline-checker-simple-format t)
-(setq doom-modeline-workspace-name nil)
-(setq doom-modeline-persp-name nil)
-(setq doom-modeline-lsp nil)
+(after! doom-modeline
+  (doom-modeline-def-modeline 'main
+    '(matches buffer-info )
+    '(minor-modes checker major-mode"  ")))
 
 
 ;; webmode
@@ -97,49 +95,47 @@
 (setq completion-styles '(orderless))
 (setq ivy-re-builders-alist '((t . orderless-ivy-re-builder)))
 
-;; doom modeline
-(require 'doom-modeline)
-(doom-modeline-mode 1)
-
 ;; solaire
 (solaire-global-mode +1)
 
 ;; git gutter
 (global-git-gutter-mode t)
 
-;; web hook prettier
-(setq-hook! 'web-mode-hook +format-with 'prettier-prettify)
-
+;; tmux pane
+(use-package! tmux-pane
+  :config
+  (tmux-pane-mode))
 
 ;; look up
-;; (global-set-key (kbd "M-s") '+ivy/project-search)
-(global-set-key (kbd "M-p") 'avy-goto-word-0)
+(global-set-key (kbd "M-u") 'avy-goto-word-0)
+(global-set-key (kbd "M-a") 'avy-goto-word-0)
 (global-set-key (kbd "M-o") 'avy-goto-char-timer)
 (global-set-key (kbd "M-i") 'avy-goto-line)
 (global-set-key (kbd "M-g") 'godoc-at-point)
 (global-set-key (kbd "M-f") '+ivy/project-search)
 (global-set-key (kbd "M-d") '+lookup/definition-otherk-window)
 (global-set-key (kbd "M-r") '+lookup/references)
-(global-set-key (kbd "C-i") 'better-jumper-jump-forward)
+(global-unset-key (kbd "M-k"))
+(global-unset-key (kbd "M-j"))
+(global-set-key (kbd "M-j") 'git-gutter:next-hunk)
+(global-set-key (kbd "M-k") 'git-gutter:previous-hunk) ;
 
 ;; buffer, windows, workspaces
 (global-set-key (kbd "C-h") 'evil-window-left)
 (global-set-key (kbd "C-l") 'evil-window-right)
 (global-set-key (kbd "C-j") 'evil-window-down)
 (global-set-key (kbd "C-k") 'evil-window-up)
-(global-set-key (kbd "M-n") 'evil-window-vsplit)
-(global-set-key (kbd "M-w") 'evil-window-delete)
-
 (global-set-key (kbd "M-h") '+workspace/switch-left)
 (global-set-key (kbd "M-l") '+workspace/switch-right)
-(global-unset-key (kbd "M-k"))
-(global-unset-key (kbd "M-j"))
-(global-set-key (kbd "M-j") 'git-gutter:next-hunk)
-(global-set-key (kbd "M-k") 'git-gutter:previous-hunk)
-(global-set-key (kbd "M-c") 'lsp-rename)
 
+;; tree macs
 (global-set-key (kbd "C-s") 'treemacs)
 (global-set-key (kbd "C-g") 'treemacs-select-window)
+
+;; misc
+;;(global-set-key (kbd "M-c") 'lsp-rename)
+;;(global-set-key (kbd "C-i") 'better-jumper-jump-forward)
+
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
       :desc "evil ex mode for fast saves" ";" #'evil-ex)
@@ -153,10 +149,6 @@
            "go build -v && go test -v && go vet"))
 
 (use-package rjsx-mode
-  :mode ("\\.js\\'"
-         "\\.jsx\\'"
-         "\\.ts\\'"
-         "\\.tsx\\'")
   :config
   (setq js2-mode-show-parse-errors nil
         js2-mode-show-strict-warnings nil
@@ -164,11 +156,13 @@
         js-indent-level 2)
   (electric-pair-mode 1))
 
+;; prettier
 (use-package prettier-js
   :defer t
   :diminish prettier-js-mode
-  :hook (((js2-mode rjsx-mode) . prettier-js-mode))
+  :hook (((js2-mode rjsx-mode web-mode typescript-mode) . prettier-js-mode))
   :init) ; (f)ormat (p)rettier
+
 
 ;; prettier settings
 ;;(setq prettier-js-args '(

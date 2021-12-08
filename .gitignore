@@ -4,3 +4,4 @@
 .config/nvim/unused/
 .lein/repl-history
 .git
+*.swp

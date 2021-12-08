@@ -56,7 +56,7 @@
 (package! tmux-pane)
 (package! prettier-js)
 (package! evil-escape :disable t)
-(package! doom-modeline)
+(package! atomic-chrome)
 (package! git-gutter)
 (package! orderless)
 (package! prescient)
