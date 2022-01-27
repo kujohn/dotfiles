@@ -39,19 +39,16 @@
             (funcall (intern (format "+lookup/%s" fn)) identifier arg)))))
 
 ;; company / tabnine / lsp
-(require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
-(setq company-minimum-prefix-length 4
-      company-tooltip-limit 10
-      company-idle-delay 0.5)
+(setq company-idle-delay 0)
 (setq lsp-prefer-capf t)
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024))
-(setq lsp-idle-delay 0.500)
-(setq lsp-on-idle-hook nil)
-(setq lsp-log-io nil)
+;; (setq lsp-idle-delay 0.500)
+;; (setq lsp-on-idle-hook nil)
+;; (setq lsp-log-io nil)
 (company-tng-mode t)
-(global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; doom-modeli
 (after! doom-modeline
@@ -76,6 +73,12 @@
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
+
+;; zoom
+(zoom-mode +1)
+
+;; dumb-jump
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 ;; prescient
 (ivy-prescient-mode +1)
@@ -111,7 +114,8 @@
 ;; avy
 (setq avy-all-windows nil)
 (global-set-key (kbd "M-a") 'avy-goto-word-0)
-(map! :leader "a" 'avy-goto-word-0)
+(map! :leader "f" 'avy-goto-word-0)
+(map! :leader "d" 'avy-goto-line)
 
 ;; fringe marks
 (global-evil-fringe-mark-mode)

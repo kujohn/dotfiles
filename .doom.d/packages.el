@@ -63,6 +63,7 @@
 (package! ivy-prescient)
 (package! company-prescient)
 (package! company-tabnine)
-(package! web-mode)
 (package! yascroll)
 (package! evil-fringe-mark)
+(package! zoom)
+(package! dumb-jump)
