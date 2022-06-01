@@ -2,10 +2,10 @@
 ;;; $DOOMDIR/packages.el
 
 ;; To install a package with Doom you must declare them here and run 'doom sync'
-;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 
 
+;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
@@ -48,19 +48,22 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-
+;
 (package! osx-clipboard)
 (package! ag)
 (package! avy)
 (package! flycheck)
 (package! tmux-pane)
 (package! prettier-js)
-(package! dumb-jump)
+(package! evil-escape :disable t)
+(package! atomic-chrome)
+(package! git-gutter)
+(package! orderless)
 (package! prescient)
+(package! ivy-prescient)
 (package! company-prescient)
 (package! company-tabnine)
-(package! tree-sitter)
-(package! tree-sitter-langs)
-(package! orderless)
-;;(package! evil-escape :disable t)
-;;(package! evil-fringe-mark)
+(package! yascroll)
+(package! evil-fringe-mark)
+(package! zoom)
+(package! dumb-jump)
