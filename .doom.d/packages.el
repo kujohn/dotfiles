@@ -62,5 +62,7 @@
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! orderless)
+(package! origami)
+(package! dash-at-point)
 ;;(package! evil-escape :disable t)
 ;;(package! evil-fringe-mark)

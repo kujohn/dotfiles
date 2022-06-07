@@ -6,10 +6,10 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Johhn Ku"
-      user-mail-address "hellojohhnku@gmail.com")
+(setq user-full-name "John Ku"
+      user-mail-address "hellojohnku@gmail.com")
 
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-monokai-pro)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -19,8 +19,8 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-
 (setq mac-command-modifier 'super)
+(set-face-attribute 'default nil :font "PragmataPro Liga")
 
 (remove-hook 'tty-setup-hook 'doom-init-clipboard-in-tty-emacs-h)
 
@@ -40,10 +40,10 @@
 (setq lsp-log-io nil)
 
 ;; doom-modeli
-;; (after! doom-modeline
-;;   (doom-modeline-def-modeline 'main
-;;     '(matches buffer-info)
-;;     '(checker major-mode)))
+(after! doom-modeline
+  (doom-modeline-def-modeline 'main
+    '(matches buffer-info)
+    '(checker major-mode)))
 
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
@@ -76,18 +76,20 @@
 
 ;; bindings
 (global-set-key (kbd "M-g") 'godoc-at-point)
-(global-set-key (kbd "M-f") '+ivy/project-search)
-(global-set-key (kbd "M-d") '+lookup/definition-otherk-window)
+(global-set-key (kbd "M-f") '+vertico/project-search)
+(global-set-key (kbd "M-d") '+lookup/documentation)
 (global-set-key (kbd "M-r") '+lookup/references)
+(global-set-key (kbd "M-g") 'dash-at-point)
+(global-set-key (kbd "M-TAB") 'company-complete-selection)
 
 (global-unset-key (kbd "M-k"))
 (global-unset-key (kbd "M-j"))
-(global-set-key (kbd "M-j") 'git-gutter:next-hunk)
-(global-set-key (kbd "M-k") 'git-gutter:previous-hunk) ;
+(global-set-key (kbd "M-j") 'flycheck-next-error)
+(global-set-key (kbd "M-k") 'flycheck-previous-error) ;
 
 ;; fringe marks
-;;(global-evil-fringe-mark-mode)
-;;(map! :leader "s" 'counsel-evil-marks)
+;; (global-evil-fringe-mark-mode)
+;; (map! :leader "s" 'counsel-evil-marks)
 
 ;; buffer, windows, workspaces
 (global-set-key (kbd "C-h") 'evil-window-left)
@@ -101,8 +103,12 @@
 (global-set-key (kbd "C-s") 'treemacs)
 (global-set-key (kbd "C-g") 'treemacs-select-window)
 
+;; flycheck
+(map! :leader "l" 'flycheck-list-errors)
+
 ;; misc
 (map! :leader "r" 'lsp-rename)
+
 
 ;; no eval mode, remap to evil-ex mode
 (map! :leader
@@ -125,6 +131,7 @@
   (electric-pair-mode 1))
 
 ;; prettier
+(add-hook 'tsx-mode-hook 'prettier-js-mode)
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'web-mode-hook 'prettier-js-mode)
 (add-hook 'rjsx-mode-hook 'prettier-js-mode)
@@ -140,6 +147,13 @@
         left-margin-width 1 right-margin-width 0)
   (flycheck-refresh-fringes-and-margins))
 (add-hook 'flycheck-mode-hook #'my/set-flycheck-margins)
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*Flycheck errors*" eos)
+              (display-buffer-reuse-window
+               display-buffer-in-side-window)
+              (side            . bottom)
+              (reusable-frames . visible)
+              (window-height   . 0.15)))
 
 
 ;; tsx-mode
@@ -155,3 +169,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . tsx-mode))
+
+
+;; origami
+(require 'origami)
