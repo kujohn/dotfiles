@@ -1,0 +1,22 @@
+theme = "ayu_dark"
+
+[editor]
+true-color = true
+
+[editor.indent-guides]
+render = false
+character = "╎"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+C-h = 'jump_view_left'
+C-l = 'jump_view_right'
+C-k = 'jump_view_up'
+C-j = 'jump_view_down'
+C-x = 'extend_line_above'
+g = { j = 'goto_next_change', k = 'goto_prev_change'}
+V = ['select_mode', 'extend_line_below']
