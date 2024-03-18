@@ -9,7 +9,7 @@
 (setq user-full-name "John Ku"
       user-mail-address "hellojohnku@gmail.com")
 
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-1337)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -84,8 +84,18 @@
 
 (global-unset-key (kbd "M-k"))
 (global-unset-key (kbd "M-j"))
-(global-set-key (kbd "M-j") 'flycheck-next-error)
-(global-set-key (kbd "M-k") 'flycheck-previous-error) ;
+(global-unset-key (kbd "M-i"))
+(global-unset-key (kbd "M-o"))
+(global-set-key (kbd "M-i") 'better-jumper-jump-forward)
+(global-set-key (kbd "M-o") 'better-jumper-jump-backward)
+(global-set-key (kbd "M-j") 'git-gutter:next-hunk)
+(global-set-key (kbd "M-k") 'git-gutter:previous-hunk)
+(global-unset-key (kbd "M-h"))
+(global-unset-key (kbd "M-l"))
+(global-set-key (kbd "M-h") '+workspace/switch-left)
+(global-set-key (kbd "M-l") '+workspace/switch-right)
+
+(map! :m (if (display-graphic-p) [C-i] "TAB") #'evil-jump-forward)
 
 ;; fringe marks
 ;; (global-evil-fringe-mark-mode)
@@ -96,8 +106,6 @@
 (global-set-key (kbd "C-l") 'evil-window-right)
 (global-set-key (kbd "C-j") 'evil-window-down)
 (global-set-key (kbd "C-k") 'evil-window-up)
-(global-set-key (kbd "M-h") '+workspace/switch-left)
-(global-set-key (kbd "M-l") '+workspace/switch-right)
 
 ;; tree macs
 (global-set-key (kbd "C-s") 'treemacs)
@@ -153,12 +161,8 @@
                display-buffer-in-side-window)
               (side            . bottom)
               (reusable-frames . visible)
-              (window-height   . 0.15)))
+              (window-height   . 0.10)))
 
-
-;; tsx-mode
-(straight-use-package '(tsi :type git :host github :repo "orzechowskid/tsi.el"))
-(straight-use-package '(tsx-mode :type git :host github :repo "orzechowskid/tsx-mode.el"))
 
 ;; treesitter
 (use-package! tree-sitter
@@ -166,6 +170,14 @@
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+
+;; tsx-mode
+(straight-use-package '(tsi :type git :host github :repo "orzechowskid/tsi.el"))
+(straight-use-package '(tsx-mode :type git :host github :repo "orzechowskid/tsx-mode.el"))
+(straight-use-package '(sublimity :type git :host github :repo "zk-phi/sublimity"))
+
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . tsx-mode))
@@ -173,3 +185,10 @@
 
 ;; origami
 (require 'origami)
+
+;; sublimity
+(require 'sublimity)
+;;(require 'sublimity-scroll)
+;;(require 'sublimity-map) ;; experimental
+(require 'sublimity-attractive)
+(setq sublimity-attractive-centering-width 150)

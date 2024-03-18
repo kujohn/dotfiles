@@ -1,6 +1,0 @@
-#!/bin/bash
-
-cp -r ./.doom.d ~/.doom.d
-cp -r .config/ ~/.config/
-
-cp ./{.zshrc,.bash_profile,.tmux.conf} ~/

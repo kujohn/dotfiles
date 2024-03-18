@@ -1,39 +1,38 @@
 # vim:fileencoding=utf-8:ft=conf:foldmethod=marker
 
-font_family      DM Mono
+font_family      PragmataPro Mono Liga
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 
 font_size 14.0
-macos_thicken_fonts 1
-# url_color #0087BD
+macos_thicken_fonts 0
 url_style curly
 
 copy_on_select yes
-
 sync_to_monitor yes
 
-window_margin_width 3.5
-window_padding_width 10
+hide_window_decorations titlebar-only
 
-background_opacity         1
+window_margin_width 0 3
+window_padding_width 0 3
+window_border_width 0
+
+background_opacity 1
 dynamic_background_opacity no
 
-macos_hide_titlebar no
-# macos_titlebar_color background
 copy_on_select clipboard
-
-#: Hide the kitty window's title bar on macOS.
-hide_window_decorations yes
-
 macos_option_as_alt yes
 
 map cmd+n       new_os_window
 map cmd+w       close_window
-map cmd+equal     change_font_size all +1.0
-map cmd+minus     change_font_size all -1.0
-map cmd+backspace change_font_size all 0
+map cmd+shift+equal     change_font_size all +1.0
+map cmd+shift+minus     change_font_size all -1.0
+map cmd+shift+backspace change_font_size all 0
+
+map cmd+equal     change_font_size current +1.0
+map cmd+minus     change_font_size current -1.0
+map cmd+backspace change_font_size current 0
 
 # The cursor color
 # cursor #da39ac
@@ -86,9 +85,9 @@ map cmd+backspace change_font_size all 0
 # color15  #f8f8ff
 
 # Mouse & cursor
-cursor_blink_interval     0.3
+cursor_blink_interval     0.4
 cursor_stop_blinking_after 0
-cursor_shape     beam
+cursor_shape block
 mouse_hide_wait 10.0
 
 scrollback_lines 10000
@@ -107,7 +106,7 @@ select_by_word_characters :@-./_~?&=%+#
 
 #don't care, use i3.
 focus_follows_mouse no
-remember_window_size   no
+remember_window_size yes
 enabled_layouts *
 initial_window_width   1024
 initial_window_height  600
@@ -127,14 +126,13 @@ enable_audio_bell no
 open_url_modifiers ctrl
 open_url_with default
 
+confirm_os_window_close 0
 use_system_wcwidth yes
 
 # The value of the TERM environment variable to set
 term xterm-kitty
 
 #window decorations
-window_border_width 0
-window_padding_width 0
 # active_border_color #020122
 # inactive_border_color #020122
 
@@ -153,6 +151,6 @@ map ctrl+shift+o      pass_selection_to_program google-chrome
 
 
 # BEGIN_KITTY_THEME
-# Tango Light
+# 1984 Dark
 include current-theme.conf
 # END_KITTY_THEME

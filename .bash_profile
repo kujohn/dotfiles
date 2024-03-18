@@ -92,3 +92,4 @@ complete -C /usr/local/bin/bit bit
 # export DCI_A3_ID=XXX
 # export DCI_A3_KEY=XXX
 # export DCI_A3_CONTEXT=XXX
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
