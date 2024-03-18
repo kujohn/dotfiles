@@ -1,3 +1,70 @@
+# [language-server.efm]
+# command = "efm-langserver"
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
+[language-server.golangci-lint-lsp]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint-lsp.config]
+command = ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]
+
+[[language]]
+name = "typescript"
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react"},
+  # { name = "efm", only-features = [ "diagnostics"] },
+]
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react"},
+  # { name = "efm", only-features = [ "diagnostics"] },
+]
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react"},
+  # { name = "efm", only-features = [ "diagnostics"] },
+]
+grammar = "javascript"
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react"},
+  # { name = "efm", only-features = [ "diagnostics"] },
+]
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+indent = { tab-width = 4, unit = "\t" }
+auto-format = true
+
 [[language]]
 name = "html"
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "html"] }
@@ -13,17 +80,3 @@ name = "css"
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "css"] }
 auto-format = true
 
-[[language]]
-name = "javascript"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
-auto-format = true
-
-[[language]]
-name = "typescript"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
-auto-format = true
-
-[[language]]
-name = "tsx"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
-auto-format = true

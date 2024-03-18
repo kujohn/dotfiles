@@ -1,0 +1,64 @@
+[language-server.efm]
+command = "efm-langserver"
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[[language]]
+name = "typescript"
+auto-format = true
+language-servers = [
+  { name = "efm", only-features = [ "diagnostics"] },
+  { name = "typescript-language-server", except-features = [ "format" ] }
+]
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+
+[[language]]
+name = "tsx"
+file-types = ["tsx", "ts", "jsx"]
+auto-format = true
+language-servers = [
+  { name = "efm", only-features = [ "diagnostics"] },
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react"}
+]
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
+
+[[language]]
+name = "html"
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "json"
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "json"] }
+auto-format = true
+
+[[language]]
+name = "css"
+formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "css"] }
+auto-format = true
+
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
+[language-server.golangci-lint-lsp]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint-lsp.config]
+command = ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]

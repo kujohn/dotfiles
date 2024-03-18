@@ -1,11 +1,13 @@
-theme = "ayu_dark"
+theme = "adwaita-dark"
 
 [editor]
-true-color = true
+auto-completion = true
+idle-timeout = 0
 
 [editor.indent-guides]
-render = false
-character = "╎"
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,10 +15,26 @@ normal = "block"
 select = "underline"
 
 [keys.normal]
-C-h = 'jump_view_left'
-C-l = 'jump_view_right'
-C-k = 'jump_view_up'
-C-j = 'jump_view_down'
-C-x = 'extend_line_above'
-g = { j = 'goto_next_change', k = 'goto_prev_change'}
-V = ['select_mode', 'extend_line_below']
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
+#g = { j = 'goto_next_change', k = 'goto_prev_change'}
+
+# Some nice Helix stuff
+C-q = "expand_selection"
+C-a = "shrink_selection"
+C-n = "goto_next_change"
+C-p = "goto_prev_change"
+C-f = "select_next_sibling"
+C-b = "select_prev_sibling"
+
+
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection"]
+
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+V = ["select_mode", "extend_to_line_bounds"]
+
+[editor.file-picker]
+hidden = false
