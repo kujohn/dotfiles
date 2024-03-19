@@ -11,7 +11,6 @@ alias kthemes='kitty +kitten themes'
 alias wip='git commit -n -m "wip"; push'
 alias push='git push origin head'
 alias alias ..="cd .."
-alias python='python3'
 
 # source ~/.zplug/init.zsh
 # zplug "changyuheng/fz", defer:1
@@ -52,8 +51,8 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+# zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+# zinit light sindresorhus/pure
 zinit load zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -66,4 +65,5 @@ if [ -d ~/.bash_completion.d ]; then
     . $file
   done
 fi
-# eval "$(zoxide init zsh)"
+
+eval "$(starship init zsh)"

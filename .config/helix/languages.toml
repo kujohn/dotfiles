@@ -31,7 +31,6 @@ config = { userLanguages = { tsx = "html", "*.tsx" = "html" } }
 [[language]]
 name = "typescript"
 language-servers = [
-  { name = "tailwindcss-ls"},
   { name = "typescript-language-server", except-features = [ "format" ] },
 ]
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
@@ -41,6 +40,7 @@ auto-format = true
 name = "tsx"
 language-servers = [
   { name = "tailwindcss-ls"},
+  { name = "vscode-css-language-server", except-features = [ "format" ] },
   { name = "typescript-language-server", except-features = [ "format" ] }
 ]
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
@@ -50,6 +50,7 @@ auto-format = true
 name = "jsx"
 language-servers = [
   { name = "tailwindcss-ls"},
+  { name = "vscode-css-language-server", except-features = [ "format" ] },
   { name = "typescript-language-server", except-features = [ "format" ] }
 ]
 grammar = "javascript"
@@ -60,6 +61,7 @@ auto-format = true
 name = "javascript"
 language-servers = [
   { name = "tailwindcss-ls"},
+  { name = "vscode-css-language-server", except-features = [ "format" ] },
   { name = "typescript-language-server", except-features = [ "format" ] },
 ]
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
