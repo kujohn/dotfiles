@@ -3,13 +3,15 @@ alias kc='kubectx'
 alias w='whisper-admin'
 alias d='go doc'
 alias h='helm'
-alias ll='exa -la'
-alias ls='exa'
+alias ll='lsd -la --icon=never'
+alias ls='lsd --icon=never'
+alias l='lsd -la --icon=never'
 alias vim='nvim'
 alias kthemes='kitty +kitten themes'
 alias wip='git commit -n -m "wip"; push'
 alias push='git push origin head'
 alias alias ..="cd .."
+alias python='python3'
 
 # source ~/.zplug/init.zsh
 # zplug "changyuheng/fz", defer:1
@@ -23,7 +25,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ :$PATH: == *:$HOME/bin:* ]] || PATH=$HOME/bin:$PATH
-complete -F __start_kubectl k
 
 export PATH="$HOME/.nvm/versions/node/v6.11.1/bin/:$HOME/go/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
@@ -59,7 +60,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light Aloxaf/fzf-tab
 
 # z, fz, fzf
-. /Users/jku/bin/z.sh
+. /Users/johnku/bin/z.sh
 if [ -d ~/.bash_completion.d ]; then
   for file in ~/.bash_completion.d/*; do
     . $file

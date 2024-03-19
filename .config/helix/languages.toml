@@ -1,5 +1,5 @@
-# [language-server.efm]
-# command = "efm-langserver"
+[language-server.efm]
+command = "efm-langserver"
 
 [language-server.typescript-language-server]
 command = "typescript-language-server"
@@ -23,12 +23,16 @@ command = "golangci-lint-langserver"
 [language-server.golangci-lint-lsp.config]
 command = ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]
 
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+config = { userLanguages = { tsx = "html", "*.tsx" = "html" } }
+
 [[language]]
 name = "typescript"
 language-servers = [
+  { name = "tailwindcss-ls"},
   { name = "typescript-language-server", except-features = [ "format" ] },
-  { name = "tailwindcss-react"},
-  # { name = "efm", only-features = [ "diagnostics"] },
 ]
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
 auto-format = true
@@ -36,9 +40,8 @@ auto-format = true
 [[language]]
 name = "tsx"
 language-servers = [
-  { name = "typescript-language-server", except-features = [ "format" ] },
-  { name = "tailwindcss-react"},
-  # { name = "efm", only-features = [ "diagnostics"] },
+  { name = "tailwindcss-ls"},
+  { name = "typescript-language-server", except-features = [ "format" ] }
 ]
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
 auto-format = true
@@ -46,9 +49,8 @@ auto-format = true
 [[language]]
 name = "jsx"
 language-servers = [
-  { name = "typescript-language-server", except-features = [ "format" ] },
-  { name = "tailwindcss-react"},
-  # { name = "efm", only-features = [ "diagnostics"] },
+  { name = "tailwindcss-ls"},
+  { name = "typescript-language-server", except-features = [ "format" ] }
 ]
 grammar = "javascript"
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
@@ -57,9 +59,8 @@ auto-format = true
 [[language]]
 name = "javascript"
 language-servers = [
+  { name = "tailwindcss-ls"},
   { name = "typescript-language-server", except-features = [ "format" ] },
-  { name = "tailwindcss-react"},
-  # { name = "efm", only-features = [ "diagnostics"] },
 ]
 formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
 indent = { tab-width = 4, unit = "\t" }
