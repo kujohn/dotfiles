@@ -1,11 +1,11 @@
-theme = "solarized_osaka"
+theme = "adwaita-dark"
 
 [editor]
 auto-completion = true
 idle-timeout = 0
 
 [editor.indent-guides]
-render = false
+render = true
 character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
@@ -19,7 +19,6 @@ C-h = "jump_view_left"
 C-l = "jump_view_right"
 C-j = "jump_view_down"
 C-k = "jump_view_up"
-#C-g = "goto_word"
 #g = { j = 'goto_next_change', k = 'goto_prev_change'}
 
 # Some nice Helix stuff
@@ -29,6 +28,7 @@ C-n = "goto_next_change"
 C-p = "goto_prev_change"
 C-f = "select_next_sibling"
 C-b = "select_prev_sibling"
+"'" = "goto_word"
 
 
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection"]
@@ -39,4 +39,3 @@ V = ["select_mode", "extend_to_line_bounds"]
 
 [editor.file-picker]
 hidden = false
-

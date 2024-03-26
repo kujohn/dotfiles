@@ -12,10 +12,10 @@ url_style curly
 copy_on_select yes
 sync_to_monitor yes
 
-hide_window_decorations titlebar-and-corners
+hide_window_decorations titlebar-only
 
-window_margin_width 0 0
-window_padding_width 0 0
+window_margin_width 0 3
+window_padding_width 0 3
 window_border_width 0
 
 background_opacity 1
@@ -33,6 +33,56 @@ map cmd+shift+backspace change_font_size all 0
 map cmd+equal     change_font_size current +1.0
 map cmd+minus     change_font_size current -1.0
 map cmd+backspace change_font_size current 0
+
+# The cursor color
+# cursor #da39ac
+
+# The foreground color
+# foreground #b4b4b9
+
+# The background color
+# background #020221
+
+# The foreground for selections
+# selection_foreground #36363a
+
+# The background for selections
+# selection_background #ddcfbf
+
+# The 16 terminal colors. There are 8 basic colors, each color has a dull and
+# bright version.
+
+# black
+# color0   #000004
+# color8   #020221
+
+# red
+# color1   #ff3600
+# color9   #ff8e78
+
+# green
+# color2   #718e3f
+# color10  #b1bf75
+
+# yellow
+# color3   #ffc552
+# color11  #ffd392
+
+# blue (purple and blue!)
+# color4  #635196
+# color12 #99a4bc
+
+# magenta (orange)
+# color5   #ff761a
+# color13  #ffb07b
+
+# cyan
+# color6   #34bfa4
+# color14  #8bccbf
+
+# white
+# color7   #b4b4b9
+# color15  #f8f8ff
 
 # Mouse & cursor
 cursor_blink_interval     0.4
@@ -99,13 +149,8 @@ map ctrl+shift+c        copy_to_clipboard
 map shift+insert        paste_from_selection
 map ctrl+shift+o      pass_selection_to_program google-chrome
 
-# filetree
-allow_remote_control yes
-enabled_layouts splits:split_axis=horizontal
-map cmd+p launch --location before --cwd current --title tree open_file_tree.bash
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# 1984 Dark
 include current-theme.conf
 # END_KITTY_THEME
-

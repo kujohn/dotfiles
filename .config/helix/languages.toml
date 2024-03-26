@@ -1,11 +1,11 @@
-[language-server.efm]
-command = "efm-langserver"
 
+## typescript
 [language-server.typescript-language-server]
 command = "typescript-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
 
+## golang
 [language-server.gopls]
 command = "gopls"
 
@@ -23,63 +23,68 @@ command = "golangci-lint-langserver"
 [language-server.golangci-lint-lsp.config]
 command = ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]
 
-[language-server.tailwindcss-ls]
-command = "tailwindcss-language-server"
-args = ["--stdio"]
-config = { userLanguages = { tsx = "html", "*.tsx" = "html" } }
+
+## prettier
+[language-server.efm-lsp-prettier]
+command = "efm-langserver"
+
+[language-server.efm-lsp-prettier.config]
+documentFormatting = true
+
+[[language-server.efm-lsp-prettier.config.languages.javascript]]
+formatCommand ="prettierd --stdin-filepath ${INPUT}"
+formatStdin = true
+
 
 [[language]]
 name = "typescript"
+auto-format = true
 language-servers = [
   { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react" },
+  { name = "efm-lsp-prettier", only-features = [ "format" ] },
 ]
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
-auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [
-  { name = "tailwindcss-ls"},
-  { name = "vscode-css-language-server", except-features = [ "format" ] },
-  { name = "typescript-language-server", except-features = [ "format" ] }
-]
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
 auto-format = true
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react" },
+  { name = "efm-lsp-prettier", only-features = [ "format" ] },
+]
 
 [[language]]
 name = "jsx"
-language-servers = [
-  { name = "tailwindcss-ls"},
-  { name = "vscode-css-language-server", except-features = [ "format" ] },
-  { name = "typescript-language-server", except-features = [ "format" ] }
-]
 grammar = "javascript"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
 auto-format = true
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react" },
+  { name = "efm-lsp-prettier", only-features = [ "format" ] },
+]
 
 [[language]]
 name = "javascript"
-language-servers = [
-  { name = "tailwindcss-ls"},
-  { name = "vscode-css-language-server", except-features = [ "format" ] },
-  { name = "typescript-language-server", except-features = [ "format" ] },
-]
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "typescript"] }
-indent = { tab-width = 4, unit = "\t" }
 auto-format = true
+language-servers = [
+  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "tailwindcss-react" },
+  { name = "efm-lsp-prettier", only-features = [ "format" ] },
+]
 
 [[language]]
 name = "html"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "html"] }
 auto-format = true
+language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] } ]
 
 [[language]]
 name = "json"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "json"] }
 auto-format = true
+language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] } ]
 
 [[language]]
 name = "css"
-formatter = { command = 'prettier', args = ["--config", ".prettierrc", "--parser", "css"] }
 auto-format = true
+language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] } ]
 
