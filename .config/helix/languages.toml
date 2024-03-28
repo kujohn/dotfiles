@@ -1,13 +1,36 @@
-
 ## typescript
 [language-server.typescript-language-server]
 command = "typescript-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
 
+## HTML
+[language-server.html-language-server]
+command = "vscode-html-language-server"
+args = ["--stdio"]
+
+## CSS
+[language-server.css-languageserver]
+command = "css-languageserver"
+args = ["--stdio"]
+
+## Tailwind
+[language-server.tailwindcss-react]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+## Emmet
+[language-server.emmet-ls]
+command = "emmet-ls"
+args = ["--stdio"]
+
 ## golang
 [language-server.gopls]
 command = "gopls"
+
+## snippet
+[language-server.snippet-ls]
+command = "helix-snippets-ls"
 
 [language-server.gopls.config.hints]
 assignVariableTypes = true
@@ -21,70 +44,153 @@ rangeVariableTypes = true
 command = "golangci-lint-langserver"
 
 [language-server.golangci-lint-lsp.config]
-command = ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]
+command = [
+  "golangci-lint",
+  "run",
+  "--out-format",
+  "json",
+  "--issues-exit-code=1",
+]
 
 
-## prettier
-[language-server.efm-lsp-prettier]
-command = "efm-langserver"
-
-[language-server.efm-lsp-prettier.config]
-documentFormatting = true
-
-[[language-server.efm-lsp-prettier.config.languages.javascript]]
-formatCommand ="prettierd --stdin-filepath ${INPUT}"
-formatStdin = true
-
-
+## configuration
 [[language]]
 name = "typescript"
 auto-format = true
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "typescript",
+] }
 language-servers = [
-  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  { name = "snippet-ls" },
+  { name = "emmet-ls" },
+  { name = "html-language-server" },
+  { name = "css-languageserver", except-features = [
+    "format",
+  ] },
   { name = "tailwindcss-react" },
-  { name = "efm-lsp-prettier", only-features = [ "format" ] },
 ]
 
 [[language]]
 name = "tsx"
 auto-format = true
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "tsx",
+] }
 language-servers = [
-  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  { name = "snippet-ls" },
+  { name = "emmet-ls" },
+  { name = "html-language-server" },
+  { name = "css-languageserver", except-features = [
+    "format",
+  ] },
   { name = "tailwindcss-react" },
-  { name = "efm-lsp-prettier", only-features = [ "format" ] },
 ]
 
 [[language]]
 name = "jsx"
 grammar = "javascript"
 auto-format = true
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "jsx",
+] }
 language-servers = [
-  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  { name = "snippet-ls" },
+  { name = "emmet-ls" },
+  { name = "html-language-server" },
+  { name = "css-languageserver", except-features = [
+    "format",
+  ] },
   { name = "tailwindcss-react" },
-  { name = "efm-lsp-prettier", only-features = [ "format" ] },
 ]
 
 [[language]]
 name = "javascript"
 auto-format = true
 language-servers = [
-  { name = "typescript-language-server", except-features = [ "format" ] },
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  { name = "snippet-ls" },
+  { name = "emmet-ls" },
+  { name = "html-language-server" },
+  { name = "css-languageserver", except-features = [
+    "format",
+  ] },
   { name = "tailwindcss-react" },
-  { name = "efm-lsp-prettier", only-features = [ "format" ] },
 ]
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "javascript",
+] }
 
 [[language]]
 name = "html"
 auto-format = true
-language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] } ]
+language-servers = [
+  { name = "emmet-ls" },
+  { name = "html-language-server" },
+  { name = "css-languageserver", except-features = [
+    "format",
+  ] },
+  { name = "tailwindcss-react" },
+]
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "html",
+] }
 
 [[language]]
 name = "json"
 auto-format = true
-language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] } ]
+language-servers = [{ name = "vscode-json-language-server" }]
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "json",
+] }
 
 [[language]]
 name = "css"
 auto-format = true
-language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] } ]
+language-servers = [{ name = "css-languageserver" }]
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--config",
+  "/Users/johnku/dprint.json",
+  "--stdin",
+  "css",
+] }
 
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }

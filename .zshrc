@@ -3,10 +3,10 @@ alias kc='kubectx'
 alias w='whisper-admin'
 alias d='go doc'
 alias h='helm'
-alias ll='exa -la'
-alias ls='exa'
+alias ll='lsd -la --icon=never'
+alias ls='lsd --icon=never'
+alias l='lsd -la --icon=never'
 alias vim='nvim'
-alias token='appleconnect serviceTicket -n --realm=APPLECONNECT-UAT.APPLE.COM serviceHost=api-isd-candlestick-dev.us-west-1a.app.apple.com --dawToken --appId=151513'
 alias kthemes='kitty +kitten themes'
 alias wip='git commit -n -m "wip"; push'
 alias push='git push origin head'
@@ -16,6 +16,9 @@ alias alias ..="cd .."
 # zplug "changyuheng/fz", defer:1
 # zplug "rupa/z", use:z.sh
 # zplug load
+export DPRINT_INSTALL="/Users/johnku/.dprint"
+export PATH="$DPRINT_INSTALL/bin:$PATH"
+
 
 export HELIX_RUNTIME=~/src/helix/runtime
 export EDITOR="hx"
@@ -25,7 +28,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ :$PATH: == *:$HOME/bin:* ]] || PATH=$HOME/bin:$PATH
-complete -F __start_kubectl k
 
 export PATH="$HOME/.nvm/versions/node/v6.11.1/bin/:$HOME/go/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
@@ -53,21 +55,19 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+# zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+# zinit light sindresorhus/pure
 zinit load zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light Aloxaf/fzf-tab
 
 # z, fz, fzf
-. /Users/jku/bin/z.sh
+. /Users/johnku/bin/z.sh
 if [ -d ~/.bash_completion.d ]; then
   for file in ~/.bash_completion.d/*; do
     . $file
   done
 fi
-# eval "$(zoxide init zsh)"
 
-source <(capri --zsh-completions 2>/dev/null)
-source <(isc --zsh-completions 2>/dev/null)
+eval "$(starship init zsh)"
