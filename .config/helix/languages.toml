@@ -28,10 +28,6 @@ args = ["--stdio"]
 [language-server.gopls]
 command = "gopls"
 
-## snippet
-[language-server.snippet-ls]
-command = "helix-snippets-ls"
-
 [language-server.gopls.config.hints]
 assignVariableTypes = true
 compositeLiteralFields = true
@@ -68,7 +64,6 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "snippet-ls" },
   { name = "emmet-ls" },
   { name = "html-language-server" },
   { name = "css-languageserver", except-features = [
@@ -91,7 +86,6 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "snippet-ls" },
   { name = "emmet-ls" },
   { name = "html-language-server" },
   { name = "css-languageserver", except-features = [
@@ -115,7 +109,6 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "snippet-ls" },
   { name = "emmet-ls" },
   { name = "html-language-server" },
   { name = "css-languageserver", except-features = [
@@ -131,7 +124,6 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "snippet-ls" },
   { name = "emmet-ls" },
   { name = "html-language-server" },
   { name = "css-languageserver", except-features = [
