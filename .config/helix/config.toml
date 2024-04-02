@@ -1,4 +1,4 @@
-theme = "adwaita-dark"
+theme = "horizon-dark"
 
 [editor]
 true-color = true
@@ -30,9 +30,7 @@ C-n = "goto_next_change"
 C-p = "goto_prev_change"
 C-f = "select_next_sibling"
 C-b = "select_prev_sibling"
-"'" = "goto_word"
-
-
+"'" = ["goto_word"]
 "*" = [
   "move_char_right",
   "move_prev_word_start",

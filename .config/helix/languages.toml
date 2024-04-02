@@ -53,44 +53,24 @@ command = [
 [[language]]
 name = "typescript"
 auto-format = true
-formatter = { command = "dprint", args = [
-  "fmt",
-  "--config",
-  "/Users/johnku/dprint.json",
-  "--stdin",
-  "typescript",
-] }
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
   { name = "emmet-ls" },
-  { name = "html-language-server" },
-  { name = "css-languageserver", except-features = [
-    "format",
-  ] },
   { name = "tailwindcss-react" },
 ]
 
 [[language]]
 name = "tsx"
 auto-format = true
-formatter = { command = "dprint", args = [
-  "fmt",
-  "--config",
-  "/Users/johnku/dprint.json",
-  "--stdin",
-  "tsx",
-] }
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
   { name = "emmet-ls" },
-  { name = "html-language-server" },
-  { name = "css-languageserver", except-features = [
-    "format",
-  ] },
   { name = "tailwindcss-react" },
 ]
 
@@ -98,19 +78,12 @@ language-servers = [
 name = "jsx"
 grammar = "javascript"
 auto-format = true
-formatter = { command = "dprint", args = [
-  "fmt",
-  "--config",
-  "/Users/johnku/dprint.json",
-  "--stdin",
-  "jsx",
-] }
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
   { name = "emmet-ls" },
-  { name = "html-language-server" },
   { name = "css-languageserver", except-features = [
     "format",
   ] },
@@ -120,28 +93,22 @@ language-servers = [
 [[language]]
 name = "javascript"
 auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
   { name = "emmet-ls" },
-  { name = "html-language-server" },
   { name = "css-languageserver", except-features = [
     "format",
   ] },
   { name = "tailwindcss-react" },
 ]
-formatter = { command = "dprint", args = [
-  "fmt",
-  "--config",
-  "/Users/johnku/dprint.json",
-  "--stdin",
-  "javascript",
-] }
 
 [[language]]
 name = "html"
 auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = [
   { name = "emmet-ls" },
   { name = "html-language-server" },
@@ -150,13 +117,6 @@ language-servers = [
   ] },
   { name = "tailwindcss-react" },
 ]
-formatter = { command = "dprint", args = [
-  "fmt",
-  "--config",
-  "/Users/johnku/dprint.json",
-  "--stdin",
-  "html",
-] }
 
 [[language]]
 name = "json"
