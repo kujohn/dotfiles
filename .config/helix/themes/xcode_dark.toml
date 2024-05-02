@@ -52,12 +52,12 @@
 "ui.window" = { bg = "base2" }
 "ui.help" = { bg = "base2", fg = "fg1" }
 
-"ui.statusline.normal" = { fg = "base1", bg = "blue", modifiers = [ "bold" ]}
-"ui.statusline.insert" = { fg = "base1", bg = "lgreen", modifiers = [ "bold" ]}
-"ui.statusline.select" = { fg = "base1", bg = "red", modifiers = [ "bold" ] }
+"ui.statusline.normal" = { fg = "base1", bg = "blue", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "base1", bg = "lgreen", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "base1", bg = "red", modifiers = ["bold"] }
 
 "ui.text" = { fg = "fg1" }
-"ui.text.focus" = { fg = "fg1", modifiers= ["bold"] }
+"ui.text.focus" = { fg = "fg1", modifiers = ["bold"] }
 "ui.virtual.whitespace" = "base5"
 "ui.virtual.ruler" = { bg = "base0" }
 "ui.virtual.indent-guide" = { fg = "base6" }
@@ -80,10 +80,10 @@
 "hint" = "blue"
 
 # make diagnostic underlined, to distinguish with selection text.
-"diagnostic.hint" = { underline = { color = "blue", style="curl"} }
-"diagnostic.info"= { underline = { color = "blue", style="curl"} }
-"diagnostic.error"= { underline = { color = "lred", style="curl"} }
-"diagnostic.warning"= { underline = { color = "yellow", style="curl"} }
+"diagnostic.hint" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.error" = { underline = { color = "lred", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
 
 [palette]
 pink = "#EE81B0"
@@ -114,10 +114,10 @@ lred = "#dc597f"
 lgreen = "#7fdc59"
 
 base0 = "#232631"
-base1 = "#1C1F28" 
+base1 = "#1C1F28"
 base2 = "#232d38"
-base3 = "#313f4e" 
-base4 = "#415367" 
+base3 = "#313f4e"
+base4 = "#415367"
 base5 = "#abb2bf"
 base6 = "#292b37"
 
