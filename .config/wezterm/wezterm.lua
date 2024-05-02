@@ -30,5 +30,6 @@ return {
   },
   enable_tab_bar = true,
   use_fancy_tab_bar = false,
-  hide_tab_bar_if_only_one_tab = true
+  hide_tab_bar_if_only_one_tab = true,
+  disable_default_key_bindings = true
 }
