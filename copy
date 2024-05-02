@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cp -r ~/.config/kitty .config/
-cp -r ~/.config/helix .config/
-cp -r ~/.config/wezterm .config/
-
-cp ~/{.zshrc,.tmux.conf} .
-cp ~/dprint.json .
