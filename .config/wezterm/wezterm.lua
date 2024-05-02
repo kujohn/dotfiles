@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
+
 return {
   font = wezterm.font 'Iosevka Term Slab',
   font_size = 13,
