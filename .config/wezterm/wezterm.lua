@@ -1,11 +1,10 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
-
 return {
   font = wezterm.font 'Iosevka Term Slab',
   font_size = 13,
-  color_scheme = 'Catppuccin Mocha',
+  color_scheme = 'lovelace',
   initial_rows = 100,
   initial_cols = 300,
   window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW",
@@ -32,6 +31,6 @@ return {
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
   keys = {
-    { key = "t", mods = "CMD", action = act.DisableDefaultAssignment}
+    { key = "t", mods = "CMD", action = act.DisableDefaultAssignment},
   }
 }
