@@ -1,30 +1,51 @@
-## typescript
+#####  typescript
 [language-server.typescript-language-server]
 command = "typescript-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
 
-## HTML
+[language-server.typescript-language-server.config.completions]
+completeFunctionCalls = true
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+#####  HTML
 [language-server.html-language-server]
 command = "vscode-html-language-server"
 args = ["--stdio"]
 
-## CSS
+#####  CSS
 [language-server.css-languageserver]
 command = "css-languageserver"
 args = ["--stdio"]
 
-## Tailwind
+#####  tailwind
 [language-server.tailwindcss-react]
 command = "tailwindcss-language-server"
 args = ["--stdio"]
 
-## Emmet
+#####  emmet
 [language-server.emmet-ls]
 command = "emmet-ls"
 args = ["--stdio"]
 
-## golang
+#####  golang
 [language-server.gopls]
 command = "gopls"
 
@@ -48,8 +69,7 @@ command = [
   "--issues-exit-code=1",
 ]
 
-
-## configuration
+#####  configuration
 [[language]]
 name = "typescript"
 auto-format = true
@@ -58,8 +78,7 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "emmet-ls" },
-  { name = "tailwindcss-react" },
+  "tailwindcss-react",
 ]
 
 [[language]]
@@ -70,24 +89,20 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "emmet-ls" },
-  { name = "tailwindcss-react" },
+  "emmet-ls",
+  "tailwindcss-react",
 ]
 
 [[language]]
 name = "jsx"
-grammar = "javascript"
 auto-format = true
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "emmet-ls" },
-  { name = "css-languageserver", except-features = [
-    "format",
-  ] },
-  { name = "tailwindcss-react" },
+  "emmet-ls",
+  "tailwindcss-react",
 ]
 
 [[language]]
@@ -98,11 +113,7 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "emmet-ls" },
-  { name = "css-languageserver", except-features = [
-    "format",
-  ] },
-  { name = "tailwindcss-react" },
+  "tailwindcss-react",
 ]
 
 [[language]]
@@ -133,7 +144,7 @@ formatter = { command = "dprint", args = [
 [[language]]
 name = "css"
 auto-format = true
-language-servers = [{ name = "css-languageserver" }]
+language-servers = ["css-languageserver", "vscode-css-language-server"]
 formatter = { command = "dprint", args = [
   "fmt",
   "--config",

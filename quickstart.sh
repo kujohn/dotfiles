@@ -8,3 +8,4 @@ brew install ripgrep
 brew install the_silver_searcher
 brew install z
 brew install lsd
+brew install efm-langserver
