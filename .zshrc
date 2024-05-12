@@ -59,7 +59,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light Aloxaf/fzf-tab
 
 # z, fz, fzf
-. /Users/johnku/bin/z.sh
+# . /Users/johnku/bin/z.sh
 if [ -d ~/.bash_completion.d ]; then
   for file in ~/.bash_completion.d/*; do
     . $file
@@ -67,5 +67,16 @@ if [ -d ~/.bash_completion.d ]; then
 fi
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 source <(capri --zsh-completions 2>/dev/null)
 source <(isc --zsh-completions 2>/dev/null)
