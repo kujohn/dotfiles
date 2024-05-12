@@ -67,6 +67,5 @@ if [ -d ~/.bash_completion.d ]; then
 fi
 
 eval "$(starship init zsh)"
-. ~/.isd-cli-autocomplete-zsh
 source <(capri --zsh-completions 2>/dev/null)
 source <(isc --zsh-completions 2>/dev/null)
