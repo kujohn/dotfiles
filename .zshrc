@@ -7,18 +7,13 @@ alias commit='git add -p; git commit -n'
 alias push='git push origin head'
 alias alias ..="cd .."
 
-# source ~/.zplug/init.zsh
-# zplug "changyuheng/fz", defer:1
-# zplug "rupa/z", use:z.sh
-# zplug load
 export DPRINT_INSTALL="/Users/johnku/.dprint"
 export PATH="$DPRINT_INSTALL/bin:$PATH"
 export PYTHON="/opt/homebrew/bin/python3"
-
-
 export HELIX_RUNTIME=~/src/helix/runtime
 export EDITOR="hx"
 export NVM_DIR="$HOME/.nvm"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -58,8 +53,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light Aloxaf/fzf-tab
 
-# z, fz, fzf
-# . /Users/johnku/bin/z.sh
 if [ -d ~/.bash_completion.d ]; then
   for file in ~/.bash_completion.d/*; do
     . $file
