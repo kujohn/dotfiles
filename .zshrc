@@ -6,6 +6,7 @@ alias l='lsd -la --icon=never'
 alias commit='git add -p; git commit -n'
 alias push='git push origin head'
 alias alias ..="cd .."
+alias x="hx"
 
 export DPRINT_INSTALL="/Users/johnku/.dprint"
 export PATH="$DPRINT_INSTALL/bin:$PATH"
@@ -73,3 +74,4 @@ function y() {
 
 source <(capri --zsh-completions 2>/dev/null)
 source <(isc --zsh-completions 2>/dev/null)
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi

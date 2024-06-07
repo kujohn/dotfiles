@@ -73,7 +73,12 @@ command = [
 [[language]]
 name = "typescript"
 auto-format = true
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier', args = [
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "typescript",
+] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
@@ -84,7 +89,12 @@ language-servers = [
 [[language]]
 name = "tsx"
 auto-format = true
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier', args = [
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "typescript",
+] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
@@ -96,7 +106,12 @@ language-servers = [
 [[language]]
 name = "jsx"
 auto-format = true
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier', args = [
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "typescript",
+] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
@@ -108,7 +123,12 @@ language-servers = [
 [[language]]
 name = "javascript"
 auto-format = true
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier', args = [
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "typescript",
+] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
@@ -119,7 +139,12 @@ language-servers = [
 [[language]]
 name = "html"
 auto-format = true
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier', args = [
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "typescript",
+] }
 language-servers = [
   { name = "emmet-ls" },
   { name = "html-language-server" },
@@ -144,7 +169,7 @@ formatter = { command = "dprint", args = [
 [[language]]
 name = "css"
 auto-format = true
-language-servers = ["css-languageserver", "vscode-css-language-server"]
+language-servers = ["css-languageserver", 'tailwindcss-react']
 formatter = { command = "dprint", args = [
   "fmt",
   "--config",

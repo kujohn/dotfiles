@@ -7,7 +7,7 @@ return {
   color_scheme = 'lovelace',
   initial_rows = 100,
   initial_cols = 300,
-  window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW",
+  window_decorations = "RESIZE",
   front_end = 'WebGpu',
   webgpu_power_preference = 'HighPerformance',
   max_fps = 144,
