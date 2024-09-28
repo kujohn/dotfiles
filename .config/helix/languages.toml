@@ -81,6 +81,10 @@ command = [
   "--issues-exit-code=1",
 ]
 
+###################################################################################  glsl
+[language-server.glsl]
+command = "glsl_analyzer"
+
 ###################################################################################  configuration
 [[language]]
 name = "typescript"
@@ -112,3 +116,8 @@ name = "css"
 auto-format = true
 language-servers = ["css-languageserver", 'tailwindcss-react']
 formatter = { command = "dprint", args = [ "fmt", "--config", "/Users/johnku/dprint.json", "--stdin", "css", ] }
+
+[[language]]
+name = "glsl"
+auto-format = true
+language-servers = ["glsl"]

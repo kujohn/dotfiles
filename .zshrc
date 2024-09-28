@@ -13,15 +13,12 @@ export PATH="$DPRINT_INSTALL/bin:$PATH"
 export PYTHON="/opt/homebrew/bin/python3"
 export HELIX_RUNTIME=~/src/helix/runtime
 export EDITOR="hx"
-export NVM_DIR="$HOME/.nvm"
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ :$PATH: == *:$HOME/bin:* ]] || PATH=$HOME/bin:$PATH
 
-export PATH="$HOME/.nvm/versions/node/v6.11.1/bin/:$HOME/go/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/go/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.volta/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 

@@ -6,6 +6,7 @@ auto-completion = true
 auto-format = true
 idle-timeout = 0
 jump-label-alphabet = "asdfjklghzxcvbnmqwertyuiop"
+bufferline = "multiple"
 
 [editor.indent-guides]
 render = false
@@ -41,6 +42,14 @@ C-b = "select_prev_sibling"
 "{" = ["goto_prev_paragraph", "collapse_selection"]
 "}" = ["goto_next_paragraph", "collapse_selection"]
 V = ["select_mode", "extend_to_line_bounds"]
+
+# my own nice stuff
+"ret" = ":write"
+C-r = ":reload"
+C-q = ":buffer-close"
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
+
 
 [editor.file-picker]
 hidden = false
