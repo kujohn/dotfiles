@@ -85,6 +85,10 @@ command = [
 [language-server.glsl]
 command = "glsl_analyzer"
 
+###################################################################################  
+[language-server.sourcekit]
+command = "sourcekit-lsp"
+
 ###################################################################################  configuration
 [[language]]
 name = "typescript"
@@ -121,3 +125,8 @@ formatter = { command = "dprint", args = [ "fmt", "--config", "/Users/johnku/dpr
 name = "glsl"
 auto-format = true
 language-servers = ["glsl"]
+
+[[language]]
+name = "swift"
+auto-format = true
+language-servers = ["sourcekit"]
