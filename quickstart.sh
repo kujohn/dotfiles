@@ -11,6 +11,8 @@ brew install lsd
 brew install efm-langserver
 brew install zoxide
 brew install swift-format
+brew install swiftlint
+brew install xcode-build-server
 
 brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
