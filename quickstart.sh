@@ -16,3 +16,4 @@ brew install xcode-build-server
 
 brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
+echo "Install codelldb - https://github.com/helix-editor/helix/wiki/Debugger-Configurations#codelldb"

@@ -97,6 +97,12 @@ formatter = { command = 'prettier', args = [ "--config", ".prettierrc", "--parse
 language-servers = [ "typescript-language-server", "eslint", "tailwindcss-react" ]
 
 [[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = 'prettier', args = [ "--config", ".prettierrc", "--parser", "typescript", ] }
+language-servers = [ "typescript-language-server", "eslint"]
+
+[[language]]
 name = "tsx"
 auto-format = true
 formatter = { command = 'prettier', args = [ "--config", ".prettierrc", "--parser", "typescript", ] }
@@ -130,8 +136,25 @@ language-servers = ["glsl"]
 name = "swift"
 auto-format = true
 language-servers = ["sourcekit-lsp", "swiftlint"]
-formatter = { command = "swiftformat", args = [ "--config", "/Users/johnku/.swiftformat"]}
+formatter = { command = "swiftformat", args = [ "--config", ".swiftformat"]}
+[language.debugger]
+command = "codelldb"
+name = "codelldb"
+port-arg = "--port {}"
+transport = "tcp"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+[[language.debugger.templates.completion]]
+completion = "filename"
+name = "binary"
+
+[language.debugger.templates.args]
+program = "{0}"
+runInTerminal = true
 
 [[grammar]]
 name = "swift"
 source = { git = "https://github.com/alex-pinkus/tree-sitter-swift", rev = "57c1c6d6ffa1c44b330182d41717e6fe37430704" }
+

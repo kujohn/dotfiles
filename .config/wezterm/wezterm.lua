@@ -3,10 +3,10 @@ local act = wezterm.action
 
 
 return {
-  -- font = wezterm.font 'Iosevka Term Slab',
-  font = wezterm.font 'PragmataPro Mono Liga',
+  font = wezterm.font 'Iosevka Term Slab',
+  -- font = wezterm.font 'PragmataPro Mono Liga',
   font_size = 13,
-  color_scheme = 'Catppuccin Mocha',
+  color_scheme = 'Catppuccin Latte',
   initial_rows = 100,
   initial_cols = 300,
   window_decorations = "RESIZE",
