@@ -6,7 +6,19 @@ return {
   font = wezterm.font 'Iosevka Term Slab',
   -- font = wezterm.font 'PragmataPro Mono Liga',
   font_size = 13,
-  color_scheme = 'Catppuccin Latte',
+  color_scheme = 'Catppuccin Macchiato',
+  window_background_gradient = {
+    colors = { '#12110E', '#2A4162'},
+    -- colors = { '#112138', '#29463D'},
+    -- orientation = { Linear = { angle = -45.0 } },
+    -- orientation = {
+    --   Radial = {
+    --     cx = 0.75,
+    --     cy = 0.75,
+    --     radius = 1.25,
+    --   },
+    -- }
+  },
   initial_rows = 100,
   initial_cols = 300,
   window_decorations = "RESIZE",
@@ -32,6 +44,7 @@ return {
   enable_tab_bar = true,
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
+  default_cursor_style = "BlinkingUnderline",
   keys = {
     { key = "t", mods = "CMD", action = act.DisableDefaultAssignment},
   }

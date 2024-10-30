@@ -1,11 +1,12 @@
-theme = "zed_onelight"
+theme = "sonokai"
 
 [editor]
 true-color = true
+cursorline = true
 auto-completion = true
 auto-format = true
 idle-timeout = 0
-jump-label-alphabet = "asdfjklghzxcvbnmqwertyuiop"
+mouse = true
 bufferline = "multiple"
 
 [editor.indent-guides]
@@ -14,8 +15,8 @@ character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
 [editor.cursor-shape]
-insert = "bar"
-normal = "block"
+insert = "underline"
+normal = "underline"
 select = "underline"
 
 [keys.normal]
@@ -42,6 +43,7 @@ C-b = "select_prev_sibling"
 "{" = ["goto_prev_paragraph", "collapse_selection"]
 "}" = ["goto_next_paragraph", "collapse_selection"]
 V = ["select_mode", "extend_to_line_bounds"]
+"X" = ["extend_line_up", "extend_to_line_bounds"]
 
 # my own nice stuff
 "ret" = ":write"
