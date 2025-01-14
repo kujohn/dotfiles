@@ -1,4 +1,4 @@
-theme = "sonokai"
+theme = "catppuccin_macchiato"
 
 [editor]
 true-color = true
@@ -8,16 +8,16 @@ auto-format = true
 idle-timeout = 0
 mouse = true
 bufferline = "multiple"
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "error"
 
 [editor.indent-guides]
 render = false
 character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
-[editor.cursor-shape]
-insert = "underline"
-normal = "underline"
-select = "underline"
 
 [keys.normal]
 C-h = "jump_view_left"
@@ -32,6 +32,7 @@ C-n = "goto_next_change"
 C-p = "goto_prev_change"
 C-f = "select_next_sibling"
 C-b = "select_prev_sibling"
+C-a = ":toggle-option auto-format"
 "'" = "goto_word"
 "*" = [
   "move_char_right",
@@ -52,6 +53,3 @@ C-q = ":buffer-close"
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
 
-
-[editor.file-picker]
-hidden = false
