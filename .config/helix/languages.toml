@@ -157,4 +157,3 @@ runInTerminal = true
 [[grammar]]
 name = "swift"
 source = { git = "https://github.com/alex-pinkus/tree-sitter-swift", rev = "57c1c6d6ffa1c44b330182d41717e6fe37430704" }
-

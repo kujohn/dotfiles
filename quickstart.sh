@@ -10,7 +10,7 @@ brew install z
 brew install lsd
 brew install efm-langserver
 brew install zoxide
-brew install swift-format
+brew install swiftformat
 brew install swiftlint
 brew install xcode-build-server
 
