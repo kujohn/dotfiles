@@ -7,8 +7,11 @@ return {
   -- font = wezterm.font 'PragmataPro Mono Liga',
   font_size = 13,
   color_scheme = 'Catppuccin Macchiato',
-  window_background_gradient = {
-    colors = { '#12110E', '#2A4162'},
+  colors = {
+    background = '#1C1C1C'
+  },
+  -- window_background_gradient = {
+  --   colors = { '#12110E', '#2A4162'},
     -- colors = { '#112138', '#29463D'},
     -- orientation = { Linear = { angle = -45.0 } },
     -- orientation = {
@@ -18,7 +21,7 @@ return {
     --     radius = 1.25,
     --   },
     -- }
-  },
+  -- },
   initial_rows = 100,
   initial_cols = 300,
   window_decorations = "RESIZE",

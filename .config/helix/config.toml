@@ -1,4 +1,4 @@
-theme = "ayu_dark"
+theme = "adwaita-dark"
 
 [editor]
 true-color = true

@@ -7,8 +7,8 @@ alias commit='git add -p; git commit -n'
 alias push='git push origin head'
 alias alias ..="cd .."
 alias x="hx"
-alias tarmac-dev="xcode-build-server config -project *.xcodeproj -scheme Tarmac-Dev"
-alias tarmac-uat="xcode-build-server config -project *.xcodeproj -scheme Tarmac-UAT"
+alias tarmac-dev="xcode-build-server config -project Tarmac/*.xcodeproj -scheme Tarmac-Dev"
+alias tarmac-uat="xcode-build-server config -project Tarmac/*.xcodeproj -scheme Tarmac-UAT"
 
 export DPRINT_INSTALL="/Users/johnku/.dprint"
 export PATH="$DPRINT_INSTALL/bin:$PATH"
