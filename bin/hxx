@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Ensure a filename is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <file>"
+  exit 1
+fi
+
+file="$1"
+
+# Check if the file exists
+if [ ! -f "$file" ]; then
+  echo "Error: File does not exist!"
+  exit 1
+fi
+
+# Extract filename and extension
+filename=$(basename -- "$file")
+extension="${filename##*.}"
+
+# Create a temporary file with the same extension
+temp_file=$(mktemp "/tmp/hx-safe-${filename}.XXXXXX")."$extension"
+
+# Copy original content to the temp file
+cp "$file" "$temp_file"
+
+# Function to monitor the temp file and sync changes back
+watch_temp_file() {
+    while true; do
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            fswatch -1 "$temp_file" >/dev/null 2>&1
+        else
+            inotifywait -e close_write "$temp_file" >/dev/null 2>&1
+        fi
+
+        # Delay to ensure the file is fully written
+        # sleep 0.2  
+
+        # Only overwrite the original if the temp file is not empty
+        [ -s "$temp_file" ] && cp "$temp_file" "$file"
+    done
+}
+
+# Start watching the temp file in the background
+watch_temp_file &
+watch_pid=$!
+
+# Ensure watcher stops when script exits
+trap 'kill $watch_pid 2>/dev/null' EXIT
+
+# Open the temp file in Helix
+hx "$temp_file"
+
+# Final sync on exit
+# sleep 0.2
+# [ -s "$temp_file" ] && cp "$temp_file" "$file"
+
+# Remove the temporary file
+rm "$temp_file"
