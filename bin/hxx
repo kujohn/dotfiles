@@ -26,17 +26,7 @@ cp "$file" "$temp_file"
 
 # Function to monitor the temp file and sync changes back
 watch_temp_file() {
-    while true; do
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-            fswatch -1 "$temp_file" >/dev/null 2>&1
-        else
-            inotifywait -e close_write "$temp_file" >/dev/null 2>&1
-        fi
-
-        # Delay to ensure the file is fully written
-        # sleep 0.2  
-
-        # Only overwrite the original if the temp file is not empty
+    fswatch -r --latency 0.05 "$temp_file" | while read -r event; do
         [ -s "$temp_file" ] && cp "$temp_file" "$file"
     done
 }
@@ -52,8 +42,7 @@ trap 'kill $watch_pid 2>/dev/null' EXIT
 hx "$temp_file"
 
 # Final sync on exit
-# sleep 0.2
-# [ -s "$temp_file" ] && cp "$temp_file" "$file"
+[ -s "$temp_file" ] && cp "$temp_file" "$file"
 
 # Remove the temporary file
 rm "$temp_file"
