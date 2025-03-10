@@ -18,14 +18,12 @@ render = false
 character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
-
 [keys.normal]
 C-h = "jump_view_left"
 C-l = "jump_view_right"
 C-j = "jump_view_down"
 C-k = "jump_view_up"
 
-# Some nice Helix stuff
 "C-." = "expand_selection"
 "C-," = "shrink_selection"
 C-n = "goto_next_change"
@@ -41,15 +39,22 @@ C-a = ":toggle-option auto-format"
   "search_selection",
 ]
 
-"{" = ["goto_prev_paragraph", "collapse_selection"]
-"}" = ["goto_next_paragraph", "collapse_selection"]
-V = ["select_mode", "extend_to_line_bounds"]
-"X" = ["extend_line_up", "extend_to_line_bounds"]
-
-# my own nice stuff
 "ret" = ":write"
 C-r = ":reload"
 C-q = ":buffer-close"
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
 
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+V = ["select_mode", "extend_to_line_bounds"]
+"X" = ["extend_line_up", "extend_to_line_bounds"]
+
+# yazi
+C-y = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
