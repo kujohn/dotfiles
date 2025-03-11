@@ -8,7 +8,7 @@ auto-format = true
 idle-timeout = 0
 mouse = true
 bufferline = "multiple"
-#end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "hint"
 
 [editor.inline-diagnostics]
 #cursor-line = "error"
@@ -24,12 +24,10 @@ C-l = "jump_view_right"
 C-j = "jump_view_down"
 C-k = "jump_view_up"
 
-"C-." = "expand_selection"
-"C-," = "shrink_selection"
+C-e = "expand_selection"
+C-b = "shrink_selection"
 C-n = "goto_next_change"
 C-p = "goto_prev_change"
-C-f = "select_next_sibling"
-C-b = "select_prev_sibling"
 C-a = ":toggle-option auto-format"
 "'" = "goto_word"
 "*" = [
