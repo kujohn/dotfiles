@@ -160,3 +160,14 @@ source = { git = "https://github.com/alex-pinkus/tree-sitter-swift", rev = "57c1
 # program = "{0}"
 # runInTerminal = true
 
+
+[[language]]
+name = "metal"
+scope = "source.metal"
+injection-regex = "metal"
+file-types = ["metal"]
+roots = []
+comment-token = "//"
+formatter = { command = "clang-format"}
+auto-format = true
+language-servers = ["glsl", "clangd"]
