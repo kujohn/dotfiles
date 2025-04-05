@@ -3,7 +3,8 @@ local act = wezterm.action
 
 
 return {
-  font = wezterm.font 'Iosevka Term Slab',
+  font = wezterm.font 'Berkeley Mono',
+  -- font = wezterm.font 'Iosevka Term Slab',
   -- font = wezterm.font 'PragmataPro Mono Liga',
   font_size = 13,
   color_scheme = 'Catppuccin Macchiato',
