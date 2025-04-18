@@ -2,7 +2,7 @@ theme = "everblush"
 
 [editor]
 true-color = true
-cursorline = true
+cursorline = false
 auto-completion = true
 auto-format = true
 idle-timeout = 0

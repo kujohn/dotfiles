@@ -170,4 +170,5 @@ roots = []
 comment-token = "//"
 formatter = { command = "clang-format"}
 auto-format = true
+block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["glsl", "clangd"]

@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# ----------------------------------------
+# sync-back.sh
+#
+# Usage:
+#   ./sync-back.sh /path/to/source-dir /path/to/temp-dir
+#
+# Example (from ~/tmp):
+#   ./sync-back.sh ~/Documents/shaders ./shaders
+#
+# What it does:
+#   • Absolutizes your source & temp paths
+#   • Clones only shader files (*.glsl, *.metal, *.vert, *.frag, *.comp)
+#     (and their directory structure) from source → temp
+#   • Creates a .debounce/ folder in temp **after** cloning
+#   • Watches temp for “Updated” events every 0.1 s
+#   • Debounces per-file (1 s window) via timestamp files in .debounce/
+#   • On each (debounced) change:
+#       – if deleted in temp → rm -rf in source
+#       – if created/modified → rsync --inplace that one file back to source
+#   • Cleans up temp on Ctrl‑C/SIGTERM
+# ----------------------------------------
+
+# Dependencies
+for cmd in fswatch rsync md5; do
+  if ! command -v "$cmd" &>/dev/null; then
+    echo "Error: '$cmd' not found. Install with: brew install $cmd"
+    exit 1
+  fi
+done
+
+# Usage check
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 /path/to/source-dir /path/to/temp-dir"
+  exit 1
+fi
+
+orig_src="$1"
+orig_tmp="$2"
+
+# Absolutize source
+if [ ! -d "$orig_src" ]; then
+  echo "Error: source directory '$orig_src' not found."
+  exit 1
+fi
+SOURCE_DIR="$(cd "$orig_src" && pwd)"
+
+# Absolutize temp path
+temp_parent="$(dirname "$orig_tmp")"
+[ -n "$temp_parent" ] || temp_parent="."
+TEMP_PARENT_ABS="$(cd "$temp_parent" && pwd)"
+TEMP_DIR="$TEMP_PARENT_ABS/$(basename "$orig_tmp")"
+
+# Fail if temp exists & non-empty
+if [ -d "$TEMP_DIR" ] && [ -n "$(ls -A "$TEMP_DIR")" ]; then
+  echo "Error: temp directory '$TEMP_DIR' exists and is not empty."
+  exit 1
+fi
+
+# Make temp
+mkdir -p "$TEMP_DIR"
+
+# Cleanup handler
+cleanup() {
+  echo
+  echo "Interrupted—removing temp dir: $TEMP_DIR"
+  rm -rf "$TEMP_DIR"
+  exit 1
+}
+trap cleanup INT TERM
+
+# --- filter rules: include dirs + shader extensions, exclude everything else
+RSYNC_FILTERS=(
+  --include='*/'
+  --include='*.glsl'
+  --include='*.metal'
+  --include='*.vert'
+  --include='*.frag'
+  --include='*.comp'
+  --exclude='*'
+)
+
+echo "Cloning only shader files (*.glsl, .metal, .vert, .frag, .comp) →
+       $SOURCE_DIR → $TEMP_DIR"
+rsync -a --delete "${RSYNC_FILTERS[@]}" "$SOURCE_DIR"/ "$TEMP_DIR"/
+
+# Now create debounce folder (won't get deleted by rsync above)
+DEBOUNCE_DIR="$TEMP_DIR/.debounce"
+mkdir -p "$DEBOUNCE_DIR"
+
+echo "Watching '$TEMP_DIR' for Updated events (100 ms polling)… (Ctrl‑C to stop)"
+fswatch --event Updated -l 0.1 -0 -r "$TEMP_DIR" | while IFS= read -r -d '' file; do
+  # Compute path relative to temp
+  rel="${file#$TEMP_DIR/}"
+
+  # Skip our debounce bookkeeping
+  [[ "$rel" == .debounce/* ]] && continue
+
+  # Only handle shader extensions
+  if [[ ! "$rel" =~ \.(glsl|metal|vert|frag|comp)$ ]]; then
+    continue
+  fi
+
+  # Debounce each file (1 s window) via a timestamp file
+  key=$(echo -n "$rel" | md5 -q)
+  stamp="$DEBOUNCE_DIR/$key"
+  now=$(date +%s)
+  if [ -e "$stamp" ]; then
+    last=$(stat -f %m "$stamp")
+    if (( now - last < 1 )); then
+      continue
+    fi
+  fi
+  touch "$stamp"
+
+  target="$SOURCE_DIR/$rel"
+  ts="[$(date +'%H:%M:%S')]"
+
+  if [ ! -e "$file" ]; then
+    echo "$ts Deleting: $rel"
+    rm -rf "$target"
+  else
+    echo "$ts Syncing via rsync: $rel"
+    mkdir -p "$(dirname "$target")"
+    rsync --inplace "$file" "$target"
+  fi
+done
