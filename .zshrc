@@ -9,12 +9,14 @@ alias alias ..="cd .."
 alias x="hx"
 alias tarmac-dev="xcode-build-server config -project Tarmac/*.xcodeproj -scheme Tarmac-Dev"
 alias tarmac-uat="xcode-build-server config -project Tarmac/*.xcodeproj -scheme Tarmac-UAT"
+alias shaders="shader-sync ~/Documents/Shaders ~/tmp/shaders"
 
 export DPRINT_INSTALL="/Users/johnku/.dprint"
 export PATH="$DPRINT_INSTALL/bin:$PATH"
 export PYTHON="/opt/homebrew/bin/python3"
 export HELIX_RUNTIME=~/src/helix/runtime
 export EDITOR="hx"
+export VCPKG_ROOT="/Users/johnku/src/vcpkg"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

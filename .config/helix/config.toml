@@ -42,6 +42,7 @@ C-r = ":reload"
 C-q = ":buffer-close"
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
+C-t = ":set-language metal"
 
 "{" = ["goto_prev_paragraph", "collapse_selection"]
 "}" = ["goto_next_paragraph", "collapse_selection"]
