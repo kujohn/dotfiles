@@ -1,4 +1,4 @@
-theme = "monokai_pro_spectrum"
+theme = "term16_light"
 
 [editor]
 true-color = true
