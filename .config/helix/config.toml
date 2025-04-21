@@ -1,4 +1,4 @@
-theme = "everblush"
+theme = "monokai_pro_spectrum"
 
 [editor]
 true-color = true
@@ -7,11 +7,11 @@ auto-completion = true
 auto-format = true
 idle-timeout = 0
 mouse = true
-bufferline = "multiple"
+# bufferline = "multiple"
 end-of-line-diagnostics = "hint"
 
 [editor.inline-diagnostics]
-#cursor-line = "error"
+cursor-line = "error"
 
 [editor.indent-guides]
 render = false

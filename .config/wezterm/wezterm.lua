@@ -6,7 +6,7 @@ return {
   font = wezterm.font 'Berkeley Mono',
   -- font = wezterm.font 'Iosevka Term Slab',
   -- font = wezterm.font 'PragmataPro Mono Liga',
-  font_size = 13,
+  font_size = 12,
   color_scheme = 'Catppuccin Macchiato',
   colors = {
     background = '#1C1C1C'

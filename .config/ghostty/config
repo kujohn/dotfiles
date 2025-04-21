@@ -1,0 +1,4 @@
+font-family = "Berkeley Mono"
+theme = Adwaita Dark
+title = " "
+macos-titlebar-proxy-icon = hidden
