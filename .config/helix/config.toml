@@ -1,14 +1,14 @@
-theme = "term16_light"
+theme = "sonokai"
 
 [editor]
 true-color = true
-cursorline = false
+cursorline = true
 auto-completion = true
 auto-format = true
 idle-timeout = 0
 mouse = true
 # bufferline = "multiple"
-end-of-line-diagnostics = "hint"
+# end-of-line-diagnostics = "hint"
 
 [editor.inline-diagnostics]
 cursor-line = "error"
@@ -39,7 +39,7 @@ C-a = ":toggle-option auto-format"
 
 "ret" = ":write"
 C-r = ":reload"
-C-q = ":buffer-close"
+C-q = "buffer-close"
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
 C-t = ":set-language metal"
