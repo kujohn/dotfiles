@@ -129,8 +129,10 @@ formatter = { command = "dprint", args = [ "fmt", "--config", "/Users/johnku/dpr
 
 [[language]]
 name = "glsl"
+file-types = ["metal", "glsl"]
 auto-format = true
-language-servers = ["glsl"]
+formatter = { command = "clang-format"}
+language-servers = ["glsl", "clangd"]
 
 [[language]]
 name = "swift"
@@ -161,14 +163,14 @@ source = { git = "https://github.com/alex-pinkus/tree-sitter-swift", rev = "57c1
 # runInTerminal = true
 
 
-[[language]]
-name = "metal"
-scope = "source.metal"
-injection-regex = "metal"
-file-types = ["metal"]
-roots = []
-comment-token = "//"
-formatter = { command = "clang-format"}
-auto-format = true
-block-comment-tokens = { start = "/*", end = "*/" }
-language-servers = ["glsl", "clangd"]
+# [[language]]
+# name = "metal"
+# scope = "source.metal"
+# injection-regex = "metal"
+# file-types = ["metal"]
+# roots = []
+# comment-token = "//"
+# formatter = { command = "clang-format"}
+# auto-format = true
+# block-comment-tokens = { start = "/*", end = "*/" }
+# language-servers = ["glsl", "clangd"]
