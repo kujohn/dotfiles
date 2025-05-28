@@ -9,6 +9,7 @@ alias alias ..="cd .."
 alias x="hx"
 alias tarmac-dev="xcode-build-server config -project Tarmac/*.xcodeproj -scheme Tarmac-Dev"
 alias tarmac-uat="xcode-build-server config -project Tarmac/*.xcodeproj -scheme Tarmac-UAT"
+alias basicmetal="xcode-build-server config -project basicmetal.xcodeproj -scheme basicmetal"
 alias shaders="shader-sync ~/Documents/Shaders ~/tmp/shaders"
 
 export DPRINT_INSTALL="/Users/johnku/.dprint"

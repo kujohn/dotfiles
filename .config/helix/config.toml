@@ -1,4 +1,4 @@
-theme = "zed_onedark"
+theme = "adwaita-dark"
 
 [editor]
 true-color = true
