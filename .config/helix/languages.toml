@@ -136,7 +136,7 @@ formatter = { command = "clang-format"}
 language-servers = ["glsl", "clangd"]
 
 [language-server.sourcekit-lsp]
- command = "/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp"
+command = "/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
 
 [[language]]
 name = "swift"
@@ -147,10 +147,10 @@ formatter = { command = "swiftformat"}
 
 [[grammar]]
 name = "swift"
-source = { git = "https://github.com/alex-pinkus/tree-sitter-swift", rev = "57c1c6d6ffa1c44b330182d41717e6fe37430704" }
+source = { git = "https://github.com/alex-pinkus/tree-sitter-swift", rev = "78d84ef82c387fceeb6094038da28717ea052e39" }
 
 # [language.debugger]
-# command = "codelldb"
+command = "codelldb"
 # name = "codelldb"
 # port-arg = "--port {}"
 # transport = "tcp"
