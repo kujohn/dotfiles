@@ -1,4 +1,4 @@
-theme = "zed_onedark"
+theme = "focus_nova"
 
 [editor]
 true-color = true
@@ -42,15 +42,13 @@ C-r = ":reload"
 C-q = ":buffer-close"
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
-C-t = [
-  ":set-language glsl",
-  ":set-language metal"
-]
 
 "{" = ["goto_prev_paragraph", "collapse_selection"]
 "}" = ["goto_next_paragraph", "collapse_selection"]
 V = ["select_mode", "extend_to_line_bounds"]
 "X" = ["extend_line_up", "extend_to_line_bounds"]
+"C-t" = ":theme focus_nova"
+"C-g" = ":theme papercolor-light"
 
 # yazi
 C-y = [

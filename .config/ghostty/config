@@ -1,4 +1,7 @@
-font-family = "Berkeley Mono SemiLight SemiCondensed"
-theme = 0x96f
+font-family = "Berkeley Mono Retina SemiCondensed"
+theme = dark:Japanesque, light:Raycast Light
 title = " "
 macos-titlebar-proxy-icon = hidden
+keybind = global:cmd+e=toggle_quick_terminal
+quick-terminal-position = right
+macos-titlebar-style = hidden

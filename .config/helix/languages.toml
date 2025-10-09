@@ -84,6 +84,7 @@ command = [
 ###################################################################################  glsl
 [language-server.glsl]
 command = "glsl_analyzer"
+args = ["--stdio"]
 
 ###################################################################################  swift lint
 [language-server.swiftlint]
@@ -129,7 +130,7 @@ formatter = { command = "dprint", args = [ "fmt", "--config", "/Users/johnku/dpr
 
 [[language]]
 name = "glsl"
-file-types = ["metal", "glsl"]
+file-types = ["glsl", "vert", "frag", "tesc", "tese", "geom", "comp"]
 auto-format = true
 formatter = { command = "clang-format"}
 language-servers = ["glsl", "clangd"]
