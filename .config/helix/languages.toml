@@ -135,10 +135,13 @@ auto-format = true
 formatter = { command = "clang-format"}
 language-servers = ["glsl", "clangd"]
 
+[language-server.sourcekit-lsp]
+ command = "/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp"
+
 [[language]]
 name = "swift"
 auto-format = true
-language-servers = ["swiftlint", "sourcekit-lsp"]
+language-servers = ["sourcekit-lsp"]
 formatter = { command = "swiftformat"}
 # formatter = { command = "swiftformat", args = [ "--config", ".swiftformat"]}
 
