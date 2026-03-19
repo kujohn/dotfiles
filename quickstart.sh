@@ -8,6 +8,7 @@ brew install --cask ghostty
 brew install --cask wezterm
 brew install --cask cleanshot
 brew install --cask rectangle
+brew install starship
 brew install stow
 brew install ripgrep
 brew install the_silver_searcher
