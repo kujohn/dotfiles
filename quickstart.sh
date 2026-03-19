@@ -2,7 +2,11 @@
 
 brew install tmux
 brew install helix
+brew install --cask karabiner-elements
+brew install --cask bettertouchtool
+brew install --cask ghostty
 brew install --cask wezterm
+brew install --cask cleanshot
 brew install stow
 brew install ripgrep
 brew install the_silver_searcher
